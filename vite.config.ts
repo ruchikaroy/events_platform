@@ -8,6 +8,12 @@ import mkcert from "vite-plugin-mkcert";
 // });
 
 export default defineConfig({
-  server: { https: true }, // Not needed for Vite 5+
+  server: {
+    port: 5173,
+    open: true,
+  }, // Not needed for Vite 5+
   plugins: [react(), mkcert()],
+  css: {
+    postcss: "./postcss.config.js",
+  },
 });
