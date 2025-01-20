@@ -66,7 +66,6 @@ const Events_List = () => {
   return (
     <>
       <NavBar />
-
       <ul>
         <div className="grid grid-cols-4 gap-4">
           {events.map((event) => (
