@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router";
 import ImageToAdd from "./assets/Blue Pink Playful Weekly Newsletter Email Header.png";
-import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const Home = () => {
-  const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
-
-  const navigate = useNavigate();
 
   const googleSignin = () => {
     supabase.auth
@@ -14,7 +10,7 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          //   redirectTo: window.location.href,
+          redirectTo: "https://localhost:5173/eventslist", //to save the user session on this page upon rendering
         },
       })
       .then((data) => {
@@ -29,13 +25,7 @@ const Home = () => {
   return (
     <>
       <img src={ImageToAdd} />
-      {session ? (
-        <>{navigate("/eventslist")}</>
-      ) : (
-        <>
-          <button onClick={() => googleSignin()}>Sign In With Google</button>
-        </>
-      )}
+      <button onClick={() => googleSignin()}>Sign In With Google</button>
     </>
   );
 };
