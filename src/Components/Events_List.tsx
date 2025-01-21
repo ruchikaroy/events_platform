@@ -1,7 +1,8 @@
 import Event from "../../Types/eventDataTypes";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import NavBar from "./NavBar";
+import { Spinner } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // interface Props {
 //   eventObj: Event[];
@@ -14,6 +15,8 @@ const Events_List = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const token = import.meta.env.VITE_EB_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -38,6 +41,8 @@ const Events_List = () => {
           })
         );
         setEvents(modifiedEventsWithSameLogo);
+        setIsLoading(false);
+        setError(error);
       } catch (error) {
         console.error("Error fetching events:", error);
       }
@@ -63,9 +68,29 @@ const Events_List = () => {
     }
   }, [events]);
 
+  if (isLoading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <Spinner animation="border" variant="danger" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <h2 className="font-bold leading-snug tracking-normal text-red-800 mx-auto my-6 w-full text-2xl lg:max-w-3xl lg:text-4xl">
+        Sorry! an error has occurred.
+      </h2>
+    );
+  }
+
   return (
     <>
-      <NavBar />
       <ul>
         <div className="grid grid-cols-4 gap-4">
           {events.map((event) => (

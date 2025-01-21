@@ -1,11 +1,19 @@
-import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import {
+  useSession,
+  useSupabaseClient,
+  useSessionContext,
+} from "@supabase/auth-helpers-react";
 import { useNavigate } from "react-router";
 
 const NavBar = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
-
   const navigate = useNavigate();
+  const { isLoading } = useSessionContext(); //to avoid flickering when refereshing the page
+
+  if (isLoading) {
+    return <></>;
+  }
 
   const googleSignOut = async () => {
     await supabase.auth.signOut();
