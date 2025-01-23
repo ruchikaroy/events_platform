@@ -21,5 +21,6 @@ type Event = {
     timezone: string;
     utc: string;
   };
+  venue_id: number;
 };
 export default Event;

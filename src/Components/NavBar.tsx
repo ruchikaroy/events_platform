@@ -9,7 +9,7 @@ const NavBar = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
   const navigate = useNavigate();
-  const { isLoading } = useSessionContext(); //to avoid flickering when refereshing the page
+  const { isLoading } = useSessionContext(); //to avoid flickering when refereshing
 
   if (isLoading) {
     return <></>;
@@ -31,14 +31,14 @@ const NavBar = () => {
 
           <div className="hidden lg:block">
             <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-              <li className="flex items-center p-1 text-sm gap-x-2 text-slate-600">
+              <li className="flex items-center p-1 text-sm gap-x-2 text-slate-600 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="h-6 w-6 text-slate-500"
+                  className="h-6 w-6 text-slate-500 mt-0.5"
                 >
                   <path
                     strokeLinecap="round"
@@ -46,7 +46,9 @@ const NavBar = () => {
                     d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                   />
                 </svg>
-                <p>User email: {session?.user.email}</p>
+                <p style={{ marginTop: "20px" }}>
+                  User email: {session?.user.email}
+                </p>
               </li>
               <li className="flex items-center p-1 text-sm gap-x-2 text-slate-600">
                 <svg

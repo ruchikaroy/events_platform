@@ -1,7 +1,7 @@
 import Home from "./Home";
 import { Route, Routes } from "react-router-dom";
 import Events_List from "./Components/Events_List";
-import NavBar from "./Components/NavBar";
+import Event_Detail from "./Components/Event_Detail";
 
 // interface AxiosResponse {
 //   events: Event[];
@@ -46,11 +46,11 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        {/* <Route path="/eventslist" element={<Events_List />}></Route> */}
-      </Routes>
-      <NavBar />
-      <Routes>
         <Route path="/eventslist" element={<Events_List />}></Route>
+        <Route
+          path="/eventdetails"
+          element={<Event_Detail  />}
+        ></Route>
       </Routes>
     </>
   );

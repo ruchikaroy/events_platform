@@ -5,6 +5,8 @@ import { createClient } from "@supabase/supabase-js";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const supabase = createClient(
   "https://pcstcetyssfvownxovbt.supabase.co",
