@@ -10,7 +10,7 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          redirectTo: "https://localhost:5173/eventslist", //to save the user session on this page upon rendering
+          redirectTo: "https://localhost:5174/eventslist", //to save the user session on this page upon rendering
         },
       })
       .then((data) => {
