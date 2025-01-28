@@ -13,7 +13,7 @@ interface AxiosResponse {
   events: Event[];
 }
 
-const Events_List = () => {
+const EventList = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const token = import.meta.env.VITE_EB_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
@@ -164,4 +164,4 @@ const Events_List = () => {
   );
 };
 
-export default Events_List;
+export default EventList;

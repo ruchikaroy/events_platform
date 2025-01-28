@@ -1,4 +1,4 @@
-import ImageToAdd from "./assets/Blue Pink Playful Weekly Newsletter Email Header.png";
+import ImageToAdd from "../assets/Blue Pink Playful Weekly Newsletter Email Header.png";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const Home = () => {
