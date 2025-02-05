@@ -5,15 +5,13 @@ import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
 
-// interface Props {
-//   eventObj: Event[];
-// }
-interface AxiosResponse {
-  events: Event[];
+interface Props {
+  showActions: boolean;
+  isAdmin: boolean;
 }
 
-const EventList = () => {
-  const [events, setEvents] = useState<Event[]>([]);
+const EventCard = ({ showActions, isAdmin }: Props) => {
+  const [eventData, setEventData] = useState<Event[]>([]);
   const token = import.meta.env.VITE_EB_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +21,7 @@ const EventList = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get<AxiosResponse>(
+        const response = await axios.get(
           `https://www.eventbriteapi.com/v3/organizations/${organizationId}/events/?token=${token}`,
           {
             params: {
@@ -43,7 +41,7 @@ const EventList = () => {
           })
         );
 
-        setEvents(modifiedEventsWithSameLogo);
+        setEventData(modifiedEventsWithSameLogo);
         setIsLoading(false);
         setError(error);
       } catch (error) {
@@ -56,7 +54,7 @@ const EventList = () => {
 
   useEffect(() => {
     {
-      events.forEach((event) => {
+      eventData.forEach((event) => {
         const exampleCallback = function () {
           console.log("Order complete!");
         };
@@ -69,7 +67,7 @@ const EventList = () => {
         });
       });
     }
-  }, [events]);
+  }, [eventData]);
 
   const handleButtonClick = (event: Event) => {
     navigate("/eventdetails", { state: { eventObj: event } }); // navigated to eventdetails component with the selected event object as state. passed the event obj with the state
@@ -91,7 +89,7 @@ const EventList = () => {
         ) : (
           <ul>
             <div className="grid grid-cols-4 gap-4">
-              {events.map((event) => (
+              {eventData.map((event) => (
                 <div
                   key={event.id}
                   className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96"
@@ -139,24 +137,51 @@ const EventList = () => {
                     </p>
                   </div>
                   <div className=" flex flex-col px-4 pb-4 pt-0 mt-2 ">
-                    <button
-                      id={`eventbrite-widget-modal-trigger-${event.id}`}
-                      className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1"
-                      type="button"
-                    >
-                      Register
-                    </button>
-                    <button
-                      id={event.id}
-                      className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                      type="button"
-                      onClick={() => handleButtonClick(event)}
-                    >
-                      Event Details
-                    </button>
+                    {showActions ? (
+                      <>
+                        <button className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1">
+                          Edit
+                        </button>
+                        <button className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                          Delete
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          id={`eventbrite-widget-modal-trigger-${event.id}`}
+                          className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1"
+                          type="button"
+                        >
+                          Register
+                        </button>
+                        <button
+                          id={event.id}
+                          className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          type="button"
+                          onClick={() => handleButtonClick(event)}
+                        >
+                          Event Details
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
+              {isAdmin && (
+                <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 h-[420px] justify-center items-center">
+                  <h6>
+                    <li>
+                      <button
+                        className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        type="button"
+                      >
+                        Create Event
+                      </button>
+                    </li>
+                  </h6>
+                </div>
+              )}
             </div>
           </ul>
         )}
@@ -165,4 +190,4 @@ const EventList = () => {
   );
 };
 
-export default EventList;
+export default EventCard;

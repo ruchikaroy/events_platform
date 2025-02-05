@@ -2,7 +2,6 @@ import { useSession } from "@supabase/auth-helpers-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const Admin = () => {
   const session = useSession();
@@ -16,7 +15,9 @@ const Admin = () => {
   useEffect(() => {
     axios
       .get(
-        "https://www.eventbriteapi.com/v3/users/me/?token=IQJ633P5JYYRLIA6YAM6"
+        `https://www.eventbriteapi.com/v3/users/me/?token=${
+          import.meta.env.VITE_EB_ADMIN_TOKEN
+        }`
       )
       .then((response: any) => {
         console.log(response.data);
@@ -32,7 +33,7 @@ const Admin = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (userId === inputUserId && userEmail === inputUserEmail) {
-      navigate("/eventdetails");
+      navigate("/eventslist");
       alert("Access to Admin content permitted.");
     } else {
       alert("Invalid User Email/ User Id, ");
@@ -69,8 +70,7 @@ const Admin = () => {
               setInputUserId(e.target.value);
             }}
           />
-
-          <input type="submit"></input>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </>
