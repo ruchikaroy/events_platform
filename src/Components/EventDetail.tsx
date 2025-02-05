@@ -1,16 +1,15 @@
 import Event from "../../Types/eventDataTypes";
-import { useLocation } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useSession } from "@supabase/auth-helpers-react";
-import NavBar from "./NavBar";
+import { CalendarPlus } from "lucide-react";
 
 const EventDetail = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const token = import.meta.env.VITE_EB_TOKEN;
-  const { register, handleSubmit } = useForm();
 
   const { eventObj } = (location.state as { eventObj: Event }) || {}; // retreive the eventObj from the state property in event detail component using useLocation hook
   console.log("logging event Object", eventObj);
@@ -33,7 +32,7 @@ const EventDetail = () => {
       });
   }, []);
 
-  const onSubmit = () => {
+  const creatEventButton = () => {
     const event = {
       summary: eventObj.name.text,
       description: eventObj.description.text,
@@ -60,6 +59,7 @@ const EventDetail = () => {
       .then((data) => {
         console.log(data);
         alert("Event created. Check your google calendar.");
+        navigate("/eventslist");
       })
       .catch((error: Error) => {
         console.log(error);
@@ -70,102 +70,72 @@ const EventDetail = () => {
 
   return (
     <>
-      <NavBar />
       <div className="relative flex flex-col rounded-xl bg-transparent items-center">
-        <h4 className="block text-4xl font-large text-slate-800 text-center mt-12">
+        <h4 className="block text-4xl font-large text-slate-800 text-center mt-12 mb-10">
           Event Details
         </h4>
-        <p className="text-slate-500 font-light text-center mt-8">
-          Nice to meet you! See event details to add to your calendar.
-        </p>
-        <form
-          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="w-full max-w-sm min-w-[200px]">
-            <label id="eventName" className="block mb-2 text-sm text-slate-600">
-              Event Name
-            </label>
-            <input
-              {...register("eventName")}
-              type="text"
-              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-              id="eventName"
-              defaultValue={eventObj.name.text}
-            />
-          </div>
-          <div className="w-full max-w-sm min-w-[200px]">
-            <label
-              id="eventDescription"
-              className="block mb-2 text-sm text-slate-600"
+
+        <div>
+          <h2
+            style={{ fontSize: "20px" }}
+            className="block mb-2 text-slate-800"
+          >
+            Event Name: {eventObj.name.text}
+          </h2>
+        </div>
+        <div className="w-full max-w-sm min-w-[200px]">
+          <p className="block mb-2 mt-4 text-sm text-slate-600">
+            Event Description
+          </p>
+          <textarea
+            style={{ height: "100px" }}
+            className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
+            id="eventDescription"
+            defaultValue={eventObj.description.text}
+          />
+        </div>
+        <div className="w-full max-w-sm min-w-[200px]">
+          <p className="block mb-2 text-sm text-slate-600">Event Date</p>
+          <p className="w-full bg-transparen text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+            {new Date(eventObj.start.local).toLocaleDateString()}
+          </p>
+        </div>
+        <div className="w-full max-w-sm min-w-[200px]">
+          <p className="block mb-2 text-sm text-slate-600">Start Time</p>
+          <p className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+            {new Date(eventObj.start.local)
+              .toLocaleTimeString([], {
+                hour12: true,
+              })
+              .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
+          </p>
+        </div>
+        <div className="w-full max-w-sm min-w-[200px]">
+          <p className="block mb-2 text-sm text-slate-600">End Time</p>
+          <p className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+            {new Date(eventObj.end.local)
+              .toLocaleTimeString([], {
+                hour12: true,
+              })
+              .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
+          </p>
+        </div>
+        <div className="w-full max-w-sm min-w-[200px]">
+          <p className="block mb-2 text-sm text-slate-600">Event Location</p>
+          <p className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+            {locationName.name}
+          </p>
+          <div className="flex justify-center mt-6">
+            <button
+              style={{ backgroundColor: "#ef5437" }}
+              className="flex items-center gap-4 text-white px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition"
+              onClick={() => creatEventButton()}
             >
-              Event Description
-            </label>
-            <textarea
-              {...register("eventDescription")}
-              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow h-52"
-              id="eventDescription"
-              defaultValue={eventObj.description.text}
-            />
+              <CalendarPlus size={20} />
+              Add to Calendar
+            </button>
           </div>
-          <div className="w-full max-w-sm min-w-[200px]">
-            <label id="eventName" className="block mb-2 text-sm text-slate-600">
-              Event Date
-            </label>
-            <input
-              {...register("eventDate")}
-              type="text"
-              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-              id="eventDate"
-              defaultValue={new Date(eventObj.start.local).toLocaleDateString()}
-            />
-          </div>
-          <div className="w-full max-w-sm min-w-[200px]">
-            <label id="eventName" className="block mb-2 text-sm text-slate-600">
-              Start Time
-            </label>
-            <input
-              {...register("startTime")}
-              type="text"
-              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-              id="startTime"
-              defaultValue={new Date(eventObj.start.local)
-                .toLocaleTimeString([], {
-                  hour12: true,
-                })
-                .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
-            />
-          </div>
-          <div className="w-full max-w-sm min-w-[200px]">
-            <label id="eventName" className="block mb-2 text-sm text-slate-600">
-              End Time
-            </label>
-            <input
-              {...register("endTime")}
-              type="text"
-              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-              id="endTime"
-              defaultValue={new Date(eventObj.end.local)
-                .toLocaleTimeString([], {
-                  hour12: true,
-                })
-                .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
-            />
-          </div>
-          <div className="w-full max-w-sm min-w-[200px]">
-            <label id="eventName" className="block mb-2 text-sm text-slate-600">
-              Event Location
-            </label>
-            <input
-              {...register("location")}
-              type="text"
-              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-              id="location"
-              defaultValue={locationName.name}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        </div>
       </div>
     </>
   );

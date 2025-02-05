@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavBar from "./NavBar";
 import { useNavigate } from "react-router";
 
 // interface Props {
@@ -78,7 +77,6 @@ const EventList = () => {
 
   return (
     <>
-      <NavBar />
       <div style={{ margin: "20px" }}>
         {isLoading ? (
           <div className="d-flex justify-content-center align-items-center mt-4">
@@ -108,15 +106,18 @@ const EventList = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <h6 className="mb-2 text-slate-800 text-xl font-semibold">
+                    <h6
+                      style={{ fontSize: "20px" }}
+                      className="mb-3 text-slate-800 font-semibold"
+                    >
                       <li>{event.name.text}</li>
                     </h6>
-                    <h5 className="mb-2 text-slate-800 text-xl font-semibold">
-                      <li>{new Date(event.start.local).toDateString()}</li>
-                    </h5>
-                    <h6 className="mb-2 text-slate-800 text-xl font-semibold">
+                    <h6 className=" text-slate-800 text-sm font-semibold">
                       <li>
-                        Start:{" "}
+                        Date: {new Date(event.start.local).toDateString()}
+                      </li>
+                      <li>
+                        Start Time:{" "}
                         {new Date(event.start.local)
                           .toLocaleTimeString([], {
                             hour12: true,
@@ -124,7 +125,7 @@ const EventList = () => {
                           .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
                       </li>
                       <li>
-                        End:{" "}
+                        End Time:{" "}
                         {new Date(event.end.local)
                           .toLocaleTimeString([], {
                             hour12: true,
@@ -137,13 +138,13 @@ const EventList = () => {
                       {event.description.text}
                     </p>
                   </div>
-                  <div className="px-4 pb-4 pt-0 mt-2">
+                  <div className=" flex flex-col px-4 pb-4 pt-0 mt-2 ">
                     <button
                       id={`eventbrite-widget-modal-trigger-${event.id}`}
-                      className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                      className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1"
                       type="button"
                     >
-                      Book Tickets
+                      Register
                     </button>
                     <button
                       id={event.id}
@@ -151,7 +152,7 @@ const EventList = () => {
                       type="button"
                       onClick={() => handleButtonClick(event)}
                     >
-                      View Details
+                      Event Details
                     </button>
                   </div>
                 </div>
