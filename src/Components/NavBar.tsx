@@ -11,16 +11,15 @@ const NavBar = () => {
   const navigate = useNavigate();
   const { isLoading } = useSessionContext(); //to avoid flickering when refereshing
 
-  if (isLoading) {
-    return <></>;
-  }
-
   const googleSignOut = async () => {
     await supabase.auth.signOut();
     navigate("/");
   };
 
   console.log(session);
+  if (isLoading) {
+    return <></>;
+  }
 
   return (
     <>
@@ -48,7 +47,7 @@ const NavBar = () => {
                   />
                 </svg>
                 <p style={{ marginTop: "20px" }}>
-                  User email: {session?.user.email}
+                  Logged in Email: {session?.user.email}
                 </p>
               </li>
               <li className="flex items-center p-1 text-sm gap-x-2 text-slate-600">
@@ -94,9 +93,7 @@ const NavBar = () => {
                     </Link>
                   </button>
                 </li>
-              ) : (
-                ""
-              )}
+              ) : null}
 
               <li className="flex items-center p-1 text-sm gap-x-2 text-slate-600"></li>
             </ul>

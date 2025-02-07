@@ -9,7 +9,7 @@ const EventDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const token = import.meta.env.VITE_EB_TOKEN;
+  const token = import.meta.env.VITE_EB_GENERAL_USER_TOKEN;
 
   const { eventObj } = (location.state as { eventObj: Event }) || {}; // retreive the eventObj from the state property in event detail component using useLocation hook
   console.log("logging event Object", eventObj);

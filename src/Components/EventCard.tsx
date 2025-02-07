@@ -12,7 +12,7 @@ interface Props {
 
 const EventCard = ({ showActions, isAdmin }: Props) => {
   const [eventData, setEventData] = useState<Event[]>([]);
-  const token = import.meta.env.VITE_EB_TOKEN;
+  const token = import.meta.env.VITE_EB_GENERAL_USER_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -33,14 +33,12 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
         const modifiedEventsWithSameLogo = response.data.events.map(
           (event: Event) => ({
             ...event,
-            logo: event.logo || {
-              original: {
-                url: "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F928469323%2F2563665001651%2F1%2Foriginal.png?auto=format%2Ccompress&q=75&sharp=10&s=fbc158eed52e2bebb6f5520ddd906c32",
+            logo: event.logo ||
+              event.name.text || {
+                logo_id: "928469323",
               },
-            },
           })
         );
-
         setEventData(modifiedEventsWithSameLogo);
         setIsLoading(false);
         setError(error);
@@ -71,6 +69,37 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
 
   const handleButtonClick = (event: Event) => {
     navigate("/eventdetails", { state: { eventObj: event } }); // navigated to eventdetails component with the selected event object as state. passed the event obj with the state
+  };
+  const handleCreateEventButtonClick = () => {
+    navigate("/eventform");
+  };
+
+  const handleEventDeleteButton = (event: Event) => {
+    axios
+      .post(
+        `https://www.eventbriteapi.com/v3/events/${event.id}/unpublish/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_EB_ADMIN_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log("Event Deleted!", response.data);
+        alert("Event Deleted");
+        setEventData((prevEvents) =>
+          prevEvents.filter((e) => e.id !== event.id)
+        );
+      })
+      .catch((error) => {
+        console.error(
+          "Error in deleting the event",
+          error.response?.data || error.message
+        );
+        alert("Failed to delete event");
+      });
   };
 
   return (
@@ -142,7 +171,10 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                         <button className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1">
                           Edit
                         </button>
-                        <button className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                        <button
+                          className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          onClick={() => handleEventDeleteButton(event)}
+                        >
                           Delete
                         </button>
                       </>
@@ -175,6 +207,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                       <button
                         className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         type="button"
+                        onClick={handleCreateEventButtonClick}
                       >
                         Create Event
                       </button>

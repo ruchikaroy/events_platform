@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import ImageToAdd from "../assets/Blue Pink Playful Weekly Newsletter Email Header.png";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
@@ -7,23 +7,23 @@ const Home = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
   const navigate = useNavigate();
-  const [isAdminLogin, setIsAdminLogin] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
 
   useEffect(() => {
     if (session) {
+      const checkAdminLogin = (email: any) => {
+        const adminEmail = "roymanagement369@gmail.com";
+        if (adminEmail.includes(email)) {
+          navigate("/admin");
+        } else {
+          navigate("/eventslist");
+        }
+      };
       checkAdminLogin(session.user.email);
+    } else {
+      setCheckingSession(false);
     }
   }, [session, navigate]);
-
-  const checkAdminLogin = async (email: any) => {
-    const adminEmail = "roymanagement369@gmail.com";
-
-    if (email && adminEmail.includes(email)) {
-      navigate("/admin");
-    } else {
-      navigate("/eventslist");
-    }
-  };
 
   const googleSignin = () => {
     supabase.auth
@@ -42,31 +42,30 @@ const Home = () => {
         console.log(error);
       });
   };
+  if (checkingSession) {
+    return null;
+  }
 
   return (
     <>
-      <img src={ImageToAdd} />
       {!session && (
-        <div>
-          <button
-            onClick={() => {
-              setIsAdminLogin(false);
-              googleSignin();
-            }}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          >
-            Sign In as User
-          </button>
-          <button
-            onClick={() => {
-              setIsAdminLogin(true);
-              googleSignin();
-            }}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          >
-            Sign In as Admin
-          </button>
-        </div>
+        <>
+          <img src={ImageToAdd} alt="Banner Image" />
+          <div>
+            <button
+              onClick={googleSignin}
+              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            >
+              Sign In as User
+            </button>
+            <button
+              onClick={googleSignin}
+              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            >
+              Sign In as Admin
+            </button>
+          </div>
+        </>
       )}
     </>
   );

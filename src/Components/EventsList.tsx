@@ -8,15 +8,15 @@ const EventsList = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    const checkAdminStatus = (email: any) => {
+      const adminEmail = "roymanagement369@gmail.com";
+      setIsAdmin(adminEmail.includes(email));
+    };
+
     if (session) {
       checkAdminStatus(session.user.email);
     }
   }, [session]);
-
-  const checkAdminStatus = (email: any) => {
-    const adminEmail = "roymanagement369@gmail.com";
-    setIsAdmin(adminEmail.includes(email));
-  };
 
   return <>{isAdmin ? <AdminEventList /> : <GeneralUserEventList />}</>;
 };
