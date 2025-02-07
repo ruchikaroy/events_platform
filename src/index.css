@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.logo {
+  width: 40px; /* Keeps the original space occupied */
+  height: auto;
+  transform: scale(2); /* Zooms in the image */
+  transform-origin: center; /* Ensures it zooms from the center */
+  margin-left: -200px;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

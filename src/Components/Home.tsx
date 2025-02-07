@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ImageToAdd from "../assets/Blue Pink Playful Weekly Newsletter Email Header.png";
+import ImageToAdd from "../assets/Teal Lilac Neon Green 1.png";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
 
@@ -48,25 +48,50 @@ const Home = () => {
 
   return (
     <>
-      {!session && (
-        <>
-          <img src={ImageToAdd} alt="Banner Image" />
-          <div>
-            <button
-              onClick={googleSignin}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+      <div
+        style={{ minHeight: "90vh" }}
+        className="flex flex-col justify-center items-center"
+      >
+        {!session && (
+          <>
+            <h1
+              style={{ fontSize: "40px", color: "#f4f4f4" }}
+              className=" block py-1.5 font-thin"
             >
-              Sign In as User
-            </button>
-            <button
-              onClick={googleSignin}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            >
-              Sign In as Admin
-            </button>
-          </div>
-        </>
-      )}
+              COMMUNITY EVENTS 2025
+            </h1>
+            <img
+              style={{ width: "500px", placeItems: "center" }}
+              src={ImageToAdd}
+              alt="Banner Image"
+            />
+            <div className="flex gap-3">
+              <button
+                style={{
+                  backgroundColor: "#beb5ef",
+                  color: "#486570",
+                  fontSize: "20px",
+                }}
+                onClick={googleSignin}
+                className="  px-4 py-2 rounded-md font-medium"
+              >
+                User Login
+              </button>
+              <button
+                style={{
+                  backgroundColor: "#beb5ef",
+                  color: "#486570",
+                  fontSize: "20px",
+                }}
+                onClick={googleSignin}
+                className=" px-4 py-2 rounded-md font-medium"
+              >
+                Admin Login
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 };

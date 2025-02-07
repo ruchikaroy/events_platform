@@ -107,7 +107,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
       <div style={{ margin: "20px" }}>
         {isLoading ? (
           <div className="d-flex justify-content-center align-items-center mt-4">
-            <Spinner animation="border" variant="danger" role="status">
+            <Spinner animation="border" variant="white" role="status">
               <span className="visually-hidden">Loading...</span>
             </Spinner>
           </div>
@@ -121,7 +121,8 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
               {eventData.map((event) => (
                 <div
                   key={event.id}
-                  className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96"
+                  style={{ backgroundColor: "#f4f4f4" }}
+                  className="flex flex-col my-6 shadow-sm rounded-lg w-96"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
                     <img
@@ -134,12 +135,15 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                   </div>
                   <div className="p-4">
                     <h6
-                      style={{ fontSize: "20px" }}
-                      className="mb-3 text-slate-800 font-semibold"
+                      style={{ fontSize: "20px", color: "#486570" }}
+                      className="mb-3 font-semibold"
                     >
                       <li>{event.name.text}</li>
                     </h6>
-                    <h6 className=" text-slate-800 text-sm font-semibold">
+                    <h6
+                      style={{ color: "#486570" }}
+                      className=" text-slate-800 text-sm font-semibold"
+                    >
                       <li>
                         Date: {new Date(event.start.local).toDateString()}
                       </li>
@@ -165,15 +169,19 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                       {event.description.text}
                     </p>
                   </div>
-                  <div className=" flex flex-col px-4 pb-4 pt-0 mt-2 ">
+                  <div className=" flex flex-col px-4 pb-4 pt-0 mt-1">
                     {showActions ? (
                       <>
-                        <button className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1">
+                        <button
+                          style={{ fontSize: "20px" }}
+                          className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1"
+                        >
                           Edit
                         </button>
                         <button
-                          className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                           onClick={() => handleEventDeleteButton(event)}
+                          style={{ fontSize: "20px" }}
                         >
                           Delete
                         </button>
@@ -182,16 +190,18 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                       <>
                         <button
                           id={`eventbrite-widget-modal-trigger-${event.id}`}
-                          className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1"
+                          className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1 font-thin"
                           type="button"
+                          style={{ fontSize: "20px" }}
                         >
                           Register
                         </button>
                         <button
                           id={event.id}
-                          className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                          className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin"
                           type="button"
                           onClick={() => handleButtonClick(event)}
+                          style={{ fontSize: "20px" }}
                         >
                           Event Details
                         </button>

@@ -70,39 +70,71 @@ const EventDetail = () => {
 
   return (
     <>
-      <div className="relative flex flex-col rounded-xl bg-transparent items-center">
-        <h4 className="block text-4xl font-large text-slate-800 text-center mt-12 mb-10">
+      <div className="relative flex flex-col rounded-xl bg-transparent items-center font-medium">
+        <h4
+          style={{ color: "#d5f483" }}
+          className="block text-4xl font-large text-center mt-12 mb-10"
+        >
           Event Details
         </h4>
 
         <div>
           <h2
-            style={{ fontSize: "20px" }}
-            className="block mb-2 text-slate-800"
+            style={{ fontSize: "20px", color: "#d5f483" }}
+            className="block mb-2"
           >
             Event Name: {eventObj.name.text}
           </h2>
         </div>
         <div className="w-full max-w-sm min-w-[200px]">
-          <p className="block mb-2 mt-4 text-sm text-slate-600">
+          <p style={{ color: "#f4f4f4" }} className="block mb-2 mt-4 text-sm">
             Event Description
           </p>
-          <textarea
-            style={{ height: "100px" }}
-            className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow "
-            id="eventDescription"
-            defaultValue={eventObj.description.text}
-          />
+          <div
+            style={{
+              backgroundColor: "#beb5ef",
+              border: "1px solid #beb5ef",
+              height: "100px",
+              borderRadius: "5px",
+            }}
+          >
+            <textarea
+              style={{ height: "100px" }}
+              className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+              id="eventDescription"
+              defaultValue={eventObj.description.text}
+            />
+          </div>
         </div>
-        <div className="w-full max-w-sm min-w-[200px]">
-          <p className="block mb-2 text-sm text-slate-600">Event Date</p>
-          <p className="w-full bg-transparen text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+        <div className="w-full max-w-sm min-w-[200px] mt-2">
+          <p style={{ color: "#f4f4f4" }} className="block mb-2 text-sm">
+            Event Date
+          </p>
+          <p
+            style={{
+              backgroundColor: "#beb5ef",
+              border: "1px solid #beb5ef",
+              height: "40px",
+              borderRadius: "5px",
+            }}
+            className="w-full bg-transparen text-slate-700 text-sm px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          >
             {new Date(eventObj.start.local).toLocaleDateString()}
           </p>
         </div>
         <div className="w-full max-w-sm min-w-[200px]">
-          <p className="block mb-2 text-sm text-slate-600">Start Time</p>
-          <p className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+          <p style={{ color: "#f4f4f4" }} className="block mb-2 text-sm">
+            Start Time
+          </p>
+          <p
+            style={{
+              backgroundColor: "#beb5ef",
+              border: "1px solid #beb5ef",
+              height: "40px",
+              borderRadius: "5px",
+            }}
+            className="w-full  placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          >
             {new Date(eventObj.start.local)
               .toLocaleTimeString([], {
                 hour12: true,
@@ -111,8 +143,18 @@ const EventDetail = () => {
           </p>
         </div>
         <div className="w-full max-w-sm min-w-[200px]">
-          <p className="block mb-2 text-sm text-slate-600">End Time</p>
-          <p className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+          <p style={{ color: "#f4f4f4" }} className="block mb-2 text-sm ">
+            End Time
+          </p>
+          <p
+            style={{
+              backgroundColor: "#beb5ef",
+              border: "1px solid #beb5ef",
+              height: "40px",
+              borderRadius: "5px",
+            }}
+            className="w-full placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          >
             {new Date(eventObj.end.local)
               .toLocaleTimeString([], {
                 hour12: true,
@@ -121,14 +163,28 @@ const EventDetail = () => {
           </p>
         </div>
         <div className="w-full max-w-sm min-w-[200px]">
-          <p className="block mb-2 text-sm text-slate-600">Event Location</p>
-          <p className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+          <p style={{ color: "#f4f4f4" }} className="block mb-2 text-sm ">
+            Event Location
+          </p>
+          <p
+            style={{
+              backgroundColor: "#beb5ef",
+              border: "1px solid #beb5ef",
+              height: "40px",
+              borderRadius: "5px",
+            }}
+            className="w-full placeholder:text-slate-400 text-slate-700 text-sm  px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+          >
             {locationName.name}
           </p>
           <div className="flex justify-center mt-6">
             <button
-              style={{ backgroundColor: "#ef5437" }}
-              className="flex items-center gap-4 text-white px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition"
+              style={{
+                backgroundColor: "#beb5ef",
+                color: "#486570",
+                border: "5px solid #d5f483",
+              }}
+              className="flex items-center gap-4 px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition"
               onClick={() => creatEventButton()}
             >
               <CalendarPlus size={20} />

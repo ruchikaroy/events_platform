@@ -43,34 +43,37 @@ const Admin = () => {
 
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginTop: "200px",
-          }}
-          onSubmit={handleSubmit}
-        >
-          <label>Email</label>
-          <input
-            style={{ background: "yellow", width: "500px" }}
-            type="text"
-            value={inputUserEmail}
-            onChange={(event) => setInputUserEmail(event.target.value)}
-            required
-          />
-          <label>User id</label>
-          <input
-            style={{ background: "yellow", width: "500px" }}
-            type="text"
-            value={inputUserId}
-            required
-            onChange={(e) => {
-              setInputUserId(e.target.value);
-            }}
-          />
-          <button type="submit">Submit</button>
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <div className="flex items-center justify-center">
+          <h1 style={{ color: "#f4f4f4" }}>Enter Admin Details</h1>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div
+            style={{ backgroundColor: "#f4f4f4", height: "300px" }}
+            className="relative flex flex-col items-start justify-center px-10 rounded-lg"
+          >
+            <label>Email</label>
+            <input
+              className="bg-lime-200 h-10 rounded-md"
+              style={{ width: "500px", outlineColor: "#beb5ef" }}
+              type="text"
+              value={inputUserEmail}
+              onChange={(event) => setInputUserEmail(event.target.value)}
+              required
+            />
+            <label>User id</label>
+            <input
+              className="bg-lime-200 h-10 rounded-md"
+              style={{ width: "500px", outlineColor: "#beb5ef" }}
+              type="text"
+              value={inputUserId}
+              required
+              onChange={(e) => {
+                setInputUserId(e.target.value);
+              }}
+            />
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </>
