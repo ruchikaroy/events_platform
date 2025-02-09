@@ -1,6 +1,6 @@
+import axios from "axios";
 import Event from "../../Types/eventDataTypes";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
@@ -35,7 +35,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
             ...event,
             logo: event.logo ||
               event.name.text || {
-                logo_id: "928469323",
+                logo_id: "956452663",
               },
           })
         );
@@ -121,14 +121,15 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
               {eventData.map((event) => (
                 <div
                   key={event.id}
-                  style={{ backgroundColor: "#f4f4f4" }}
+                  style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
                   className="flex flex-col my-6 shadow-sm rounded-lg w-96"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
                     <img
+                      style={{ minHeight: "250px" }}
                       src={
                         event.logo?.original?.url ||
-                        "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F928469323%2F2563665001651%2F1%2Foriginal.png?auto=format%2Ccompress&q=75&sharp=10&s=fbc158eed52e2bebb6f5520ddd906c32"
+                        "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F956452663%2F2563664921091%2F1%2Foriginal.20250209-172958?auto=format%2Ccompress&q=75&sharp=10&s=a96355c95e68beb4cb490825b82f977a"
                       }
                       alt="Event Logo"
                     />
@@ -165,19 +166,19 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                       </li>
                     </h6>
 
-                    <p className="text-slate-600 leading-normal font-light">
+                    <p className="text-slate-600 leading-normal font-light min-h-[50px]">
                       {event.description.text}
                     </p>
                   </div>
-                  <div className=" flex flex-col px-4 pb-4 pt-0 mt-1">
+                  <div className=" flex flex-col px-4 pb-4 pt-0 mt-auto">
                     {showActions ? (
                       <>
-                        <button
+                        {/* <button
                           style={{ fontSize: "20px" }}
                           className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-1"
                         >
                           Edit
-                        </button>
+                        </button> */}
                         <button
                           className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                           onClick={() => handleEventDeleteButton(event)}
@@ -211,7 +212,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 </div>
               ))}
               {isAdmin && (
-                <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 h-[420px] justify-center items-center">
+                <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96  justify-center items-center">
                   <h6>
                     <li>
                       <button

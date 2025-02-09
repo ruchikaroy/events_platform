@@ -15,7 +15,7 @@ const CreateEventForm = () => {
     startTime: "",
     endTime: "",
     timezone: "UTC",
-    currency: " GBP",
+    currency: "GBP",
     id: "928469323",
     freeEntry: "",
   });
@@ -33,6 +33,20 @@ const CreateEventForm = () => {
         "Missing API credentials. Please check your environment variables."
       );
       console.error("Error: Missing API token or organization ID.");
+      return;
+    }
+    const currentTime = new Date();
+    const selectedStartTime = new Date(formData.startTime);
+    const selectedEndTime = new Date(formData.endTime);
+
+    if (selectedStartTime < currentTime) {
+      alert("Start time cannot be in the past. Please select a future time.");
+      return;
+    }
+    if (selectedStartTime > selectedEndTime) {
+      alert(
+        "Start time cannot be before end time. Please select appropprite start time."
+      );
       return;
     }
 
@@ -146,76 +160,188 @@ const CreateEventForm = () => {
   };
 
   return (
-    <div>
-      <h1>Create an Event</h1>
-      <form onSubmit={handleSubmission}>
+    <>
+      <div className="relative flex flex-col rounded-xl items-center justify-center">
+        <h1 style={{ color: "#d5f483" }} className=" block font-thin">
+          CREATE EVENT
+        </h1>
         <div>
-          <label htmlFor="name">Event Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+          <form
+            className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+            onSubmit={handleSubmission}
+          >
+            <div className="mb-1 flex flex-col gap-6">
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                  htmlFor="name"
+                >
+                  Event Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  placeholder="Event Name"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  style={{
+                    backgroundColor: "#beb5ef",
+                    color: "#486570 !important",
+                  }}
+                  required
+                />
+              </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="description"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  Event Description
+                </label>
+                <input
+                  type="text"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  style={{
+                    backgroundColor: "#beb5ef",
+                    color: "#486570 !important",
+                  }}
+                  placeholder="Event Description"
+                  id="description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="startTime"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  Start Time
+                </label>
+                <input
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                  placeholder="Enter Start Time"
+                  type="datetime-local"
+                  id="startTime"
+                  name="startTime"
+                  value={formData.startTime}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="endTime"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  End Time
+                </label>
+                <input
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                  placeholder="Enter End Time"
+                  type="datetime-local"
+                  id="endTime"
+                  name="endTime"
+                  value={formData.endTime}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="currency"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  Currency
+                </label>
+                <input
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                  placeholder="Enter Currency"
+                  type="text"
+                  id="currency"
+                  name="currency"
+                  value={formData.currency}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="freeEntry"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  Free Event
+                </label>
+                <input
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow mb-3"
+                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                  placeholder="True or False"
+                  type="text"
+                  id="freeEntry"
+                  name="freeEntry"
+                  value={formData.freeEntry}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {/* <div>
+                <img src={formData.id} alt="Event Logo" />
+              </div> */}
+            </div>
+            <div
+              className="w-75 text-md rounded-md px-3 py-3 focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 hover:bg-green-800 hover:text-green-900 border transition-all duration-200"
+              style={{
+                backgroundColor: "#d5f483",
+                color: "#486570",
+                fontSize: "20px",
+                textAlign: "center",
+                cursor: "pointer",
+              }}
+            >
+              <button type="submit">Submit</button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="description">Event Description</label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="startTime">Start Time</label>
-          <input
-            type="datetime-local"
-            id="startTime"
-            name="startTime"
-            value={formData.startTime}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="endTime">End Time</label>
-          <input
-            type="datetime-local"
-            id="endTime"
-            name="endTime"
-            value={formData.endTime}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="currency">Currency</label>
-          <input
-            type="text"
-            id="currency"
-            name="currency"
-            value={formData.currency}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="">Free Event</label>
-          <input
-            type="text"
-            id="freeEntry"
-            name="freeEntry"
-            value={formData.freeEntry}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <img src={formData.id} alt="Event Logo" />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      {message && <p>{message}</p>}
-    </div>
+        {message && (
+          <p
+            className="font-thin"
+            style={{ color: "#f4f4f4", fontSize: "20px" }}
+          >
+            {message}
+          </p>
+        )}
+      </div>
+    </>
   );
 };
 
