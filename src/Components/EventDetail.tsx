@@ -12,7 +12,7 @@ const EventDetail = () => {
   const token = import.meta.env.VITE_EB_GENERAL_USER_TOKEN;
 
   const { eventObj } = (location.state as { eventObj: Event }) || {}; // retreive the eventObj from the state property in event detail component using useLocation hook
-  console.log("logging event Object", eventObj);
+  // console.log("logging event Object", eventObj);
 
   const [locationName, setLocationName] = useState({ name: "" });
 
@@ -25,7 +25,6 @@ const EventDetail = () => {
       )
       .then((response) => {
         setLocationName(response.data);
-        console.log("this is location", response.data.name);
       })
       .catch((error: AxiosError) => {
         console.log("Error in fetching the location name", error);
@@ -63,9 +62,7 @@ const EventDetail = () => {
       })
       .catch((error: Error) => {
         console.log(error);
-        console.log(session?.provider_token);
       });
-    console.log("This is summary", event.summary);
   };
 
   return (

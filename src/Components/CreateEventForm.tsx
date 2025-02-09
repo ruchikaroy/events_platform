@@ -16,7 +16,7 @@ const CreateEventForm = () => {
     endTime: "",
     timezone: "UTC",
     currency: "GBP",
-    id: "928469323",
+    id: "956452663",
     freeEntry: "",
   });
 
@@ -98,7 +98,7 @@ const CreateEventForm = () => {
             {
               ticket_class: {
                 name: "General Admission",
-                free: formData.freeEntry === "true",
+                free: formData.freeEntry === "true" || "True",
                 capacity: "100",
                 minimum_quantity: "1",
                 maximum_quantity: "10",
@@ -184,7 +184,7 @@ const CreateEventForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none shadow-sm focus:shadow"
                   placeholder="Event Name"
                   id="name"
                   name="name"
@@ -210,7 +210,7 @@ const CreateEventForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
                   style={{
                     backgroundColor: "#beb5ef",
                     color: "#486570 !important",
@@ -235,8 +235,11 @@ const CreateEventForm = () => {
                   Start Time
                 </label>
                 <input
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
-                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
+                  style={{
+                    backgroundColor: "#beb5ef",
+                    color: "#486570",
+                  }}
                   placeholder="Enter Start Time"
                   type="datetime-local"
                   id="startTime"
@@ -258,7 +261,7 @@ const CreateEventForm = () => {
                   End Time
                 </label>
                 <input
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
                   style={{ backgroundColor: "#beb5ef", color: "#486570" }}
                   placeholder="Enter End Time"
                   type="datetime-local"
@@ -281,7 +284,7 @@ const CreateEventForm = () => {
                   Currency
                 </label>
                 <input
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none shadow-sm focus:shadow"
                   style={{ backgroundColor: "#beb5ef", color: "#486570" }}
                   placeholder="Enter Currency"
                   type="text"
@@ -303,8 +306,11 @@ const CreateEventForm = () => {
                   Free Event
                 </label>
                 <input
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  hover:border-slate-300 shadow-sm focus:shadow mb-3"
-                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow mb-3"
+                  style={{
+                    backgroundColor: "#beb5ef",
+                    color: "#486570 !important",
+                  }}
                   placeholder="True or False"
                   type="text"
                   id="freeEntry"

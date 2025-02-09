@@ -1,6 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logoImage from "../assets/Community Logo (2).png";
+import { useState } from "react";
 import {
   useSession,
   useSupabaseClient,
@@ -10,20 +11,23 @@ import {
   faUser,
   faRightFromBracket,
   faCalendarCheck,
+  faBars,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import Hamburger from "hamburger-react";
 
 const NavBar = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
   const navigate = useNavigate();
   const { isLoading } = useSessionContext(); //to avoid flickering when refereshing
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const googleSignOut = async () => {
     await supabase.auth.signOut();
     navigate("/");
   };
 
-  console.log(session);
   if (isLoading) {
     return <></>;
   }
@@ -32,46 +36,52 @@ const NavBar = () => {
     <>
       <nav
         style={{ backgroundColor: "#f4f4f4" }}
-        className="block max-w-screen px-3 py-1  shadow-md rounded-md lg:px-8 lg:py-3 mx-2"
+        className="shadow-md py-3 px-4 lg:px-8 rounded-md"
       >
         <div
           style={{ color: "#486570" }}
-          className="container flex flex-wrap items-center justify-between px-0 h-20"
+          className="container mx-auto flex items-center justify-between" //px-0 h-20
         >
-          <img src={logoImage} alt="Community Events 2025" className="logo" />
-          <h1
-            style={{ fontSize: "40px", marginLeft: "-600px" }}
-            className=" block py-1.5 text-black font-thin"
+          <div className="flex items-center space-x-3">
+            <img
+              src={logoImage}
+              alt="Community Events 2025"
+              className=" logo h-12"
+            />
+            <h1
+              style={{ marginLeft: "100px" }}
+              className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
+            >
+              COMMUNITY EVENTS
+            </h1>
+          </div>
+          <div className="lg:hidden text-black font-thin focus:outline-none">
+            <Hamburger toggled={menuOpen} toggle={setMenuOpen} />
+          </div>
+          <div
+            className={`lg:flex lg:items-center lg:space-x-6 ${
+              menuOpen ? "block" : "hidden"
+            } w-full lg:w-auto mt-4 lg:mt-0`}
           >
-            COMMUNITY EVENTS
-          </h1>
-
-          <div className="hidden lg:flex">
             {session ? (
-              <ul className="flex flex-col gap-2 mt-1 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 space-x-0 font-light text-lg ">
+              <ul className="flex flex-col lg:flex-row lg:space-x-6  ">
                 <li className="flex items-center p-1 gap-x-2">
-                  <FontAwesomeIcon icon={faUser} style={{ color: "#486570" }} />
-                  <p
-                    className="text-black"
-                    style={{ marginTop: "20px", marginRight: "10px" }}
-                  >
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    style={{ color: "#486570", marginTop: "5px" }}
+                  />
+                  <p style={{ marginBottom: "-5px" }} className="text-black">
                     Logged in email: {session?.user.email}
                   </p>
                 </li>
-                <li
-                  style={{ marginRight: "10px" }}
-                  className="flex items-center p-1 text-md gap-x-2 text-black  "
-                >
+                <li className="flex items-center p-1 gap-x-2 text-black  ">
                   <FontAwesomeIcon
                     style={{ color: "#486570" }}
                     icon={faRightFromBracket}
                   />
                   <button onClick={() => googleSignOut()}>Sign Out</button>
                 </li>
-                <li
-                  style={{ marginRight: "-250px" }}
-                  className="flex items-center p-1 text-md gap-x-2"
-                >
+                <li className="flex items-center p-1 gap-x-2">
                   <FontAwesomeIcon
                     icon={faCalendarCheck}
                     style={{ color: "#486570" }}

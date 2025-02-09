@@ -29,7 +29,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
             },
           }
         );
-        console.log("API Response:", response.data);
+
         const modifiedEventsWithSameLogo = response.data.events.map(
           (event: Event) => ({
             ...event,
@@ -117,12 +117,12 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
           </h2>
         ) : (
           <ul>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {eventData.map((event) => (
                 <div
                   key={event.id}
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
-                  className="flex flex-col my-6 shadow-sm rounded-lg w-96"
+                  className="flex flex-col shadow-md rounded-lg w-full sm:w-96 md:w-[350px] mx-auto"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
                     <img
@@ -132,6 +132,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                         "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F956452663%2F2563664921091%2F1%2Foriginal.20250209-172958?auto=format%2Ccompress&q=75&sharp=10&s=a96355c95e68beb4cb490825b82f977a"
                       }
                       alt="Event Logo"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-4">
@@ -212,7 +213,8 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 </div>
               ))}
               {isAdmin && (
-                <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96  justify-center items-center">
+                <div className="flex flex-col items-center justify-center bg-white shadow-md border rounded-lg w-full sm:w-80 mx-auto p-6">
+                  {/* // <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96  justify-center items-center"> */}
                   <h6>
                     <li>
                       <button

@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
-  const session = useSession();
+  // const session = useSession();
   const navigate = useNavigate();
-  console.log(session);
+  // console.log(session);
   const [userId, setUserid] = useState<string>("");
   const [userEmail, setUserEmail] = useState<string>("");
   const [inputUserEmail, setInputUserEmail] = useState<string>("");
@@ -20,13 +20,10 @@ const Admin = () => {
         }`
       )
       .then((response: any) => {
-        console.log(response.data);
         const eventBriteAccountUseriD = response.data.id;
         const eventBriteUserEmail = response.data.emails[0].email;
         setUserid(eventBriteAccountUseriD);
         setUserEmail(eventBriteUserEmail);
-        console.log(eventBriteAccountUseriD);
-        console.log(eventBriteUserEmail);
       });
   }, []);
 
