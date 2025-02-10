@@ -31,7 +31,7 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          redirectTo: "http://localhost:3000/eventslist",
+          redirectTo: "https://rr-events-biz.netlify.app/",
         },
       })
       .then((data) => {
