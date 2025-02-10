@@ -340,7 +340,7 @@ const CreateEventForm = () => {
         </div>
         {message && (
           <p
-            className="font-thin mb-5"
+            className="font-thin"
             style={{ color: "#f4f4f4", fontSize: "20px" }}
           >
             {message}

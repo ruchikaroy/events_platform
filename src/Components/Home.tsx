@@ -54,8 +54,8 @@ const Home = () => {
   return (
     <>
       <div
-        style={{ minHeight: "90vh" }}
-        className="flex flex-col justify-center items-center"
+        // style={{ minHeight: "90vh" }}
+        className="flex flex-col justify-center items-center min-h-[90vh]"
       >
         {!session && (
           <>
