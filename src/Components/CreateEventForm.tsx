@@ -161,7 +161,7 @@ const CreateEventForm = () => {
 
   return (
     <>
-      <div className="relative flex flex-col rounded-xl items-center justify-center">
+      <div className="relative flex flex-col rounded-xl items-center justify-center mt-2">
         <h1
           style={{ color: "#d5f483" }}
           className=" text-center text-3xl block font-thin"
@@ -187,7 +187,7 @@ const CreateEventForm = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none shadow-sm focus:shadow"
+                  className="w-full text-md rounded-md px-4 py-2 focus:outline-none shadow-sm focus:shadow "
                   placeholder="Event Name"
                   id="name"
                   name="name"
