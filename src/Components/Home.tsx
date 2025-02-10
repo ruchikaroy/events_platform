@@ -31,7 +31,7 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          redirectTo: "http://localhost:300/auth/callback",
+          redirectTo: "https://rr-events-biz.netlify.app/auth/callback",
           queryParams: {
             access_type: "offline",
             prompt: "consent",
