@@ -71,7 +71,7 @@ const EventDetail = () => {
         <h4
           style={{ color: "#d5f483" }}
           // className="block text-4xl font-large text-center mt-12 mb-10"
-          className="block text-3xl font-large text-center mt-8 mb-6"
+          className="block text-3xl font-large text-center mt-1 mb-2"
         >
           Event Details
         </h4>
@@ -79,7 +79,7 @@ const EventDetail = () => {
         <div>
           <h2
             style={{ fontSize: "20px", color: "#d5f483" }}
-            className="block mb-2"
+            className="block mb-1"
           >
             Event Name: {eventObj.name.text}
           </h2>
@@ -97,7 +97,7 @@ const EventDetail = () => {
             }}
           >
             <textarea
-              style={{ height: "100px" }}
+              // style={{ height: "100px" }}
               className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
               id="eventDescription"
               defaultValue={eventObj.description.text}
@@ -175,14 +175,14 @@ const EventDetail = () => {
           >
             {locationName.name}
           </p>
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-2">
             <button
               style={{
                 backgroundColor: "#beb5ef",
                 color: "#486570",
                 border: "5px solid #d5f483",
               }}
-              className="flex items-center gap-4 px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition mb-5"
+              className="flex items-center gap-4 px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition"
               onClick={() => creatEventButton()}
             >
               <CalendarPlus size={20} />

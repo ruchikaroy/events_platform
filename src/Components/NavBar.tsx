@@ -50,8 +50,7 @@ const NavBar = () => {
             /> */}
             <h1
               // style={{ marginLeft: "100px" }}
-              // className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
-              className=" text-lg sm:text-sm lg:text-2xl text-black font-light"
+              className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
             >
               COMMUNITY EVENTS
             </h1>
