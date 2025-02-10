@@ -69,12 +69,12 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
 
   const handleButtonClick = () => {
     const redirectUri = encodeURIComponent(
-      "https://yourapp.com/calendar/redirect"
+      "https://rr-events-biz.netlify.app/eventslist"
     );
-    const googleCalendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?pli=1&gsessionid=1#addEvent`;
+    const googleCalendarUrl =
+      "https://calendar.google.com/calendar/u/0/r/eventedit";
     const fullUrl = `${googleCalendarUrl}&redirect_uri=${redirectUri}`;
 
-    // Redirect user to Google Calendar in the same tab
     window.location.href = fullUrl;
   };
 
