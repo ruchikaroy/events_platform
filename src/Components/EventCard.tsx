@@ -216,22 +216,14 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           rel="noopener noreferrer"
                         >
                           <button
+                            id={event.id}
                             className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin"
+                            type="button"
                             style={{ fontSize: "20px" }}
                           >
-                            Open Google Calendar
+                            Add to Calendar
                           </button>
                         </a>
-                        {/* <button
-                          id={event.id}
-                          className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin"
-                          type="button"
-                          // onClick={() => handleEventDeleteButton(event)}
-                          onClick={handleButtonClick}
-                          style={{ fontSize: "20px" }}
-                        >
-                          Event Details
-                        </button> */}
                       </>
                     )}
                   </div>
