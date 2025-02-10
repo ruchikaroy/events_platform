@@ -46,8 +46,7 @@ const EventDetail = () => {
     };
     axios
       .post(
-        // "https://www.googleapis.com/calendar/v3/calendars/primary/events",
-        "https://calendar.google.com/calendar/u/0/r/eventedit",
+        "https://www.googleapis.com/calendar/v3/calendars/primary/events",
         event,
         {
           headers: {
