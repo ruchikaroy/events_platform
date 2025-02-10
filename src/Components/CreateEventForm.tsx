@@ -161,27 +161,26 @@ const CreateEventForm = () => {
 
   return (
     <>
-      <div className="relative flex flex-col rounded-xl items-center justify-center space-y-6">
-        {/* <h1 style={{ color: "#d5f483" }} className=" block font-thin"> */}
+      <div className="relative flex flex-col rounded-xl items-center justify-center">
         <h1
           style={{ color: "#d5f483" }}
-          className="text-center text-2xl font-thin"
+          className=" text-center text-3xl block font-thin"
         >
           CREATE EVENT
         </h1>
         <div>
           <form
-            className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 grid grid-cols-2 gap-6"
+            className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
             onSubmit={handleSubmission}
           >
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2 gap-6">
               <div>
                 <label
                   style={{
                     color: "#d5f483",
                     fontSize: "20px",
                   }}
-                  className="mb-2 text-md font-thin"
+                  className=" block mb-2 text-md font-thin"
                   htmlFor="name"
                 >
                   Event Name
