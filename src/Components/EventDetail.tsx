@@ -97,10 +97,11 @@ const EventDetail = () => {
             }}
           >
             <textarea
-              // style={{ height: "100px" }}
+              style={{ height: "100px" }}
               className="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
               id="eventDescription"
               defaultValue={eventObj.description.text}
+              readOnly
             />
           </div>
         </div>
