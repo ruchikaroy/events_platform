@@ -17,6 +17,7 @@ const Home = () => {
           navigate("/admin");
         } else {
           navigate("/eventslist");
+          alert("Not authorized!");
         }
       };
       checkAdminLogin(session.user.email);
