@@ -16,7 +16,7 @@ const Home = () => {
         if (adminEmail.includes(email)) {
           navigate("/admin");
         } else {
-          navigate("/eventslist");
+          navigate("/");
           alert("Not authorized!");
         }
       };
