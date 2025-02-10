@@ -40,7 +40,8 @@ const NavBar = () => {
           style={{ color: "#486570" }}
           className="container mx-auto flex items-center justify-between" //px-0 h-20
         >
-          <div className="flex items-center space-x-3">
+          {/* <div className="flex items-center space-x-3"> */}
+          <div className="flex items-center justify-between w-full">
             {/* <img
               src={logoImage}
               alt="Community Events 2025"
@@ -54,53 +55,53 @@ const NavBar = () => {
             >
               COMMUNITY EVENTS
             </h1>
-          </div>
-          <div className="lg:hidden text-black font-thin focus:outline-none">
-            <Hamburger toggled={menuOpen} toggle={setMenuOpen} />
-          </div>
-          <div
-            className={`lg:flex lg:items-center lg:space-x-6 ${
-              menuOpen ? "block" : "hidden"
-            } w-full lg:w-auto mt-4 lg:mt-0`}
-          >
-            {session ? (
-              // <ul className="flex flex-col lg:flex-row lg:space-x-6  ">
-              <ul className="flex flex-col lg:flex-row lg:items-center lg:space-x-6">
-                <li className="flex items-center p-1 gap-x-2">
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ color: "#486570", marginTop: "5px" }}
-                  />
-                  <p className="text-black m-0">
-                    Logged in email: {session?.user.email}
-                  </p>
-                </li>
-                <li className="flex items-center gap-x-2 text-black  ">
-                  <FontAwesomeIcon
-                    style={{ color: "#486570" }}
-                    icon={faRightFromBracket}
-                  />
-                  <button onClick={() => googleSignOut()}>Sign Out</button>
-                </li>
-                <li className="flex items-center p-1 gap-x-2">
-                  <FontAwesomeIcon
-                    icon={faCalendarCheck}
-                    style={{ color: "#486570" }}
-                  />
-                  <button>
-                    <Link
-                      className="text-black"
-                      style={{
-                        textDecoration: "none",
-                      }}
-                      to={"/eventslist"}
-                    >
-                      Events
-                    </Link>
-                  </button>
-                </li>
-              </ul>
-            ) : null}
+
+            <div className="lg:hidden text-black font-thin focus:outline-none">
+              <Hamburger toggled={menuOpen} toggle={setMenuOpen} />
+            </div>
+            <div
+              className={`lg:flex lg:items-center lg:space-x-6 ${
+                menuOpen ? "block" : "hidden"
+              } lg:w-auto mt-4 lg:mt-0`}
+            >
+              {session ? (
+                <ul className="flex flex-col lg:flex-row lg:space-x-6  ">
+                  <li className="flex items-center gap-x-2">
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      style={{ color: "#486570" }}
+                    />
+                    <p className="text-black m-0">
+                      Logged in email: {session?.user.email}
+                    </p>
+                  </li>
+                  <li className="flex items-center p-1 gap-x-2 text-black  ">
+                    <FontAwesomeIcon
+                      style={{ color: "#486570" }}
+                      icon={faRightFromBracket}
+                    />
+                    <button onClick={() => googleSignOut()}>Sign Out</button>
+                  </li>
+                  <li className="flex items-center p-1 gap-x-2">
+                    <FontAwesomeIcon
+                      icon={faCalendarCheck}
+                      style={{ color: "#486570" }}
+                    />
+                    <button>
+                      <Link
+                        className="text-black"
+                        style={{
+                          textDecoration: "none",
+                        }}
+                        to={"/eventslist"}
+                      >
+                        Events
+                      </Link>
+                    </button>
+                  </li>
+                </ul>
+              ) : null}
+            </div>
           </div>
         </div>
       </nav>
