@@ -6,22 +6,22 @@ import EventsList from "./Components/EventsList";
 import CreateEventForm from "./Components/CreateEventForm";
 import ProtectedLayout from "./Components/ProtectedLayout";
 import AuthHandler from "./Components/AuthHandler";
-// import { useNavigate } from "react-router-dom";
-// import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const hash = window.location.hash.substring(1);
-  //   const params = new URLSearchParams(hash);
-  //   const accessToken = params.get("access_token");
+  useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    const params = new URLSearchParams(hash);
+    const accessToken = params.get("access_token");
 
-  //   if (accessToken) {
-  //     localStorage.setItem("access_token", accessToken);
-  //     navigate("/eventslist");
-  //   }
-  // }, [navigate]);
+    if (accessToken) {
+      localStorage.setItem("access_token", accessToken);
+      navigate("/eventslist");
+    }
+  }, [navigate]);
   return (
     <>
       <div

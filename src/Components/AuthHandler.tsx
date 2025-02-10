@@ -9,8 +9,7 @@ const AuthHandler = () => {
 
   useEffect(() => {
     const processLogin = async () => {
-      // Extract session data from URL hash fragment
-      await supabase.auth.getSession(); // Ensures Supabase processes the OAuth session
+      await supabase.auth.getSession();
 
       if (session) {
         const userEmail = session.user.email;
