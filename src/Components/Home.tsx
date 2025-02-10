@@ -19,7 +19,6 @@ const Home = () => {
           navigate("/admin");
         } else {
           navigate("/eventslist");
-          toast.error("Not authorized! Admin credentials are incorrect.");
         }
       };
       checkAdminLogin(session.user.email);
