@@ -213,7 +213,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 </div>
               ))}
               {isAdmin && (
-                <div className="flex flex-col items-center justify-center bg-white shadow-md border rounded-lg w-full sm:w-80 mx-auto p-6">
+                <div className="flex flex-col items-center justify-center bg-white shadow-md border rounded-lg w-full sm:w-80 mx-auto p-6 min-h-[550px]">
                   {/* // <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96  justify-center items-center"> */}
                   <h6>
                     <li>
