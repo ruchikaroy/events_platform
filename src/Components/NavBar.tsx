@@ -50,7 +50,7 @@ const NavBar = () => {
             <h1
               // style={{ marginLeft: "100px" }}
               // className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
-              className=" text-xl sm:text-sm lg:text-3xl text-black font-light"
+              className=" text-lg sm:text-sm lg:text-2xl text-black font-light"
             >
               COMMUNITY EVENTS
             </h1>
@@ -64,17 +64,18 @@ const NavBar = () => {
             } w-full lg:w-auto mt-4 lg:mt-0`}
           >
             {session ? (
-              <ul className="flex flex-col lg:flex-row lg:space-x-6  ">
+              // <ul className="flex flex-col lg:flex-row lg:space-x-6  ">
+              <ul className="flex flex-col lg:flex-row lg:items-center lg:space-x-6">
                 <li className="flex items-center p-1 gap-x-2">
                   <FontAwesomeIcon
                     icon={faUser}
                     style={{ color: "#486570", marginTop: "5px" }}
                   />
-                  <p style={{ marginBottom: "-5px" }} className="text-black">
+                  <p className="text-black m-0">
                     Logged in email: {session?.user.email}
                   </p>
                 </li>
-                <li className="flex items-center p-1 gap-x-2 text-black  ">
+                <li className="flex items-center gap-x-2 text-black  ">
                   <FontAwesomeIcon
                     style={{ color: "#486570" }}
                     icon={faRightFromBracket}
