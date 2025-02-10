@@ -14,14 +14,16 @@ const Home = () => {
     if (session) {
       const checkAdminLogin = (email: any) => {
         const adminEmail = "roymanagement369@gmail.com";
-        if (adminEmail.includes(email)) {
+
+        if (email === adminEmail) {
           navigate("/admin");
         } else {
+          navigate("/eventslist");
           supabase.auth
             .signOut()
             .then(() => {
-              navigate("/");
               toast.error("Not authorized! You have been logged out.");
+              navigate("/");
             })
             .catch((error) => {
               console.log("Error during sign out", error);
