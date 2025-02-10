@@ -31,7 +31,7 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          // redirectTo: window.location.href,
+          redirectTo: window.location.href,
         },
       })
       .then((data) => {
