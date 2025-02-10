@@ -1,50 +1,80 @@
-# React + TypeScript + Vite
+# Events App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Events App**, a platform where users can browse community events, sign in using their Google account, sign up for events, and add them to their personal calendar. Admin users also have access to create and delete events, giving them full control over the event listings.
 
-Currently, two official plugins are available:
+This app integrates with Eventbrite for event retrieval, creation, and deletion, providing users with a rich and up-to-date event experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Browse Community Events:** View a variety of community events in a user-friendly interface.
+- **Google Sign-In:** Sign in securely using your Google account.
+- **Sign Up for Events:** Easily register for events you're interested in.
+- **Add Events to Calendar:** Add events directly to your personal calendar with a single click.
+- **Admin Access:** Admins can create new events and delete existing ones via the admin panel.
+- **Eventbrite Integration:** Pulls in real-time event data from Eventbrite to ensure the app stays up to date with the latest events.
 
-- Configure the top-level `parserOptions` property like this:
+  ***
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+  ## Setup Instructions
+  To get started with this project, follow these steps:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Prerequisites
+  Make sure you have the following tools installed:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Node.js (version 14 or higher)
+- npm or Yarn
+- Google Developer Console Account to set up Google OAuth credentials for sign in
+- Eventbrite API key (you can get it by creating an account on Eventbrite and accessing the Developer section)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Clone the Repository
+First, clone the repository:
+
+- git clone https://github.com/yourusername/events-app.git
+- cd events-app
+
+## Install Dependencies
+Install the required dependencies:
+
+- npm install or if yarn install
+
+## Set Up Environment Variables:
+
+Create a .env file in the root directory of the project and add the following variables:
+
+# Google OAuth credentials
+
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Eventbrite API credentials
+
+EVENTBRITE_API_KEY=your-eventbrite-api-key
+
+# Your server URL
+
+REACT_APP_API_URL=http://localhost:5000
+
+You will need to replace your-google-client-id, your-google-client-secret, and your-eventbrite-api-key with your actual credentials. You can get these from Google Developer Console and Eventbrite.
+
+## Run the App
+
+Now you can run the development server:
+npm run dev
+
+---
+
+## Admin Access
+
+To access the admin panel and manage events, you must be logged in as an admin. You can implement your admin system based on the user roles after integrating authentication. Admins will have access to create new events or delete them directly from the app's interface.
+
+---
+
+## Tech Stack
+
+- Frontend: React, TypeScript, Tailwind CSS
+- API Integration: Eventbrite API
+- Build Tool: Vite
+
+---
