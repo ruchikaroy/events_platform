@@ -3,7 +3,6 @@ import ImageToAdd from "../assets/Teal Lilac Neon Green 1.png";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
 
-
 const Home = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
@@ -12,7 +11,8 @@ const Home = () => {
 
   useEffect(() => {
     if (session) {
-      navigate("/auth/callback");
+      // navigate("/auth/callback");
+      navigate("/eventslist");
     } else {
       setCheckingSession(false);
     }
