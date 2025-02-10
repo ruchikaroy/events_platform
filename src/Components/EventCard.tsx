@@ -214,6 +214,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           )}&details=${event.description.text}`}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="w-full"
                         >
                           <button
                             id={event.id}
