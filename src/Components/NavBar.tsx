@@ -11,7 +11,6 @@ import {
   faUser,
   faRightFromBracket,
   faCalendarCheck,
-  
 } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "hamburger-react";
 
@@ -45,11 +44,13 @@ const NavBar = () => {
             <img
               src={logoImage}
               alt="Community Events 2025"
-              className=" logo h-12"
+              // className=" logo h-12"
+              className="h-12"
             />
             <h1
-              style={{ marginLeft: "100px" }}
-              className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
+              // style={{ marginLeft: "100px" }}
+              // className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
+              className=" text-xl sm:text-sm lg:text-3xl text-black font-light"
             >
               COMMUNITY EVENTS
             </h1>

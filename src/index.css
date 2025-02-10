@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 .logo {
-  width: 40px; /* Keeps the original space occupied */
+  width: 40px;
   height: auto;
-  transform: scale(2); /* Zooms in the image */
-  transform-origin: center; /* Ensures it zooms from the center */
+  transform: scale(2);
+  transform-origin: center;
   margin-left: -200px;
+}
+html {
+  font-size: 100%;
 }
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
