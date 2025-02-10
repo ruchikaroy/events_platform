@@ -19,16 +19,7 @@ const Home = () => {
           navigate("/admin");
         } else {
           navigate("/eventslist");
-          supabase.auth
-            .signOut()
-            .then(() => {
-              toast.error("Not authorized! You have been logged out.");
-              navigate("/");
-            })
-            .catch((error) => {
-              console.log("Error during sign out", error);
-              toast.error("Error logging out. Please try again");
-            });
+          toast.error("Not authorized! Admin credentials are incorrect.");
         }
       };
       checkAdminLogin(session.user.email);
