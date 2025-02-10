@@ -11,24 +11,18 @@ const Home = () => {
 
   useEffect(() => {
     if (session) {
-      // navigate("/auth/callback");
-      navigate("/eventslist");
+      const checkAdminLogin = (email: any) => {
+        const adminEmail = "roymanagement369@gmail.com";
+        if (adminEmail.includes(email)) {
+          navigate("/admin");
+        } else {
+          navigate("/eventslist");
+        }
+      };
+      checkAdminLogin(session.user.email);
     } else {
       setCheckingSession(false);
     }
-    // if (session) {
-    //   const checkAdminLogin = (email: any) => {
-    //     const adminEmail = "roymanagement369@gmail.com";
-    //     if (adminEmail.includes(email)) {
-    //       navigate("/admin");
-    //     } else {
-    //       navigate("/eventslist");
-    //     }
-    //   };
-    //   checkAdminLogin(session.user.email);
-    // } else {
-    //   setCheckingSession(false);
-    // }
   }, [session, navigate]);
 
   const googleSignin = () => {
@@ -37,7 +31,8 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          redirectTo: "https://rr-events-biz.netlify.app/auth/callback",
+          redirectTo:
+            "https://pcstcetyssfvownxovbt.supabase.co/auth/v1/callback",
           queryParams: {
             access_type: "offline",
             prompt: "consent",
