@@ -182,7 +182,7 @@ const EventDetail = () => {
                 color: "#486570",
                 border: "5px solid #d5f483",
               }}
-              className="flex items-center gap-4 px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition"
+              className="flex items-center gap-4 px-5 py-3 rounded-lg shadow-md hover:opacity-90 transition mb-5"
               onClick={() => creatEventButton()}
             >
               <CalendarPlus size={20} />
