@@ -18,7 +18,7 @@ This app integrates with Eventbrite for event retrieval, creation, and deletion,
   ***
 
 ## Setup Instructions
-  To get started with this project, follow these steps:
+To get started with this project, follow these steps:
 
 - Prerequisites
   Make sure you have the following tools installed:
@@ -43,16 +43,17 @@ Install the required dependencies:
 
 Create a .env file in the root directory of the project and add the following variables:
 
-# Google OAuth credentials
+**Google OAuth credentials**
 
 GOOGLE_CLIENT_ID=your-google-client-id
+
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-# Eventbrite API credentials
+**Eventbrite API credentials**
 
 EVENTBRITE_API_KEY=your-eventbrite-api-key
 
-# Your server URL
+**Your server URL**
 
 REACT_APP_API_URL=http://localhost:5000
 
