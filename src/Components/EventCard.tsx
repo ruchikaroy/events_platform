@@ -199,7 +199,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           Register
                         </button>
                         <a
-                          href="https://calendar.google.com/calendar/u/0/r/eventedit"
+                          href={`https://calendar.google.com/calendar/u/0/r/eventedit?text=${event.name.text}&dates=${event.start.local}/${event.end.local}&details=${event.description.text}`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
