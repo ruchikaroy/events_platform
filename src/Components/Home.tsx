@@ -16,8 +16,16 @@ const Home = () => {
         if (adminEmail.includes(email)) {
           navigate("/admin");
         } else {
-          navigate("/");
-          alert("Not authorized!");
+          supabase.auth
+            .signOut()
+            .then(() => {
+              navigate("/");
+              alert("Not authorized! You have been logged out.");
+            })
+            .catch((error) => {
+              console.log("Error during sign out", error);
+              alert("Error logging out. Please try again");
+            });
         }
       };
       checkAdminLogin(session.user.email);
