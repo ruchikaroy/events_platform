@@ -17,7 +17,7 @@ This app integrates with Eventbrite for event retrieval, creation, and deletion,
 
   ***
 
-  ## Setup Instructions
+## Setup Instructions
   To get started with this project, follow these steps:
 
 - Prerequisites
