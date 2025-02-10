@@ -11,8 +11,7 @@ import {
   faUser,
   faRightFromBracket,
   faCalendarCheck,
-  faBars,
-  faTimes,
+  
 } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "hamburger-react";
 
