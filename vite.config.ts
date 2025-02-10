@@ -15,5 +15,10 @@ export default defineConfig({
   plugins: [react(), mkcert()],
   css: {
     postcss: "./postcss.config.js",
+    devSourcemap: true,
+  },
+  build: {
+    cssCodeSplit: false,
+    minify: "esbuild",
   },
 });
