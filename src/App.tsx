@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route element={<ProtectedLayout />}>
             <Route path="/eventslist" element={<EventsList />}></Route>
-            <Route path="/auth/callback" element={<AuthHandler/>}
+            <Route path="/auth/callback" element={<AuthHandler />}></Route>
             <Route path="/eventdetails" element={<EventDetail />}></Route>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/eventform" element={<CreateEventForm />}></Route>
