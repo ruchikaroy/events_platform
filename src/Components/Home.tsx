@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ImageToAdd from "../assets/Teal Lilac Neon Green 1.png";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
@@ -20,11 +21,11 @@ const Home = () => {
             .signOut()
             .then(() => {
               navigate("/");
-              alert("Not authorized! You have been logged out.");
+              toast.error("Not authorized! You have been logged out.");
             })
             .catch((error) => {
               console.log("Error during sign out", error);
-              alert("Error logging out. Please try again");
+              toast.error("Error logging out. Please try again");
             });
         }
       };
@@ -52,7 +53,7 @@ const Home = () => {
         console.log("Logged in successfully", data);
       })
       .catch((error) => {
-        alert("Error logging in to Google provider with Supabase");
+        toast.error("Error logging in to Google provider with Supabase");
         console.log(error);
       });
   };
