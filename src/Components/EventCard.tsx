@@ -67,31 +67,15 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
     }
   }, [eventData]);
 
-  const handleButtonClick = (eventData: Event[]) => {
-    const events = eventData.map((event) => {
-      return {
-        summary: event.name.text,
-        description: event.description.text,
-        start: {
-          dateTime: new Date(event.start.local).toISOString(),
-          timezone: event.start.timezone,
-        },
-        end: {
-          dateTime: new Date(event.end.local).toISOString(),
-          timezone: event.start.timezone,
-        },
-      };
-    });
+  const handleButtonClick = () => {
+    const redirectUri = encodeURIComponent(
+      "https://yourapp.com/calendar/redirect"
+    );
+    const googleCalendarUrl = `https://calendar.google.com/calendar/u/0/r/eventedit?pli=1&gsessionid=1#addEvent`;
+    const fullUrl = `${googleCalendarUrl}&redirect_uri=${redirectUri}`;
 
-    axios
-      .post("https://calendar.google.com/calendar/u/0/r/eventedit", events)
-      .then((response) => {
-        console.log(response.data.data);
-        navigate("/eventslist");
-      })
-      .catch((error) => {
-        console.error("Error posting event", error);
-      });
+    // Redirect user to Google Calendar in the same tab
+    window.location.href = fullUrl;
   };
 
   // const handleButtonClick = (event: Event) => {
@@ -230,7 +214,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin"
                           type="button"
                           // onClick={() => handleEventDeleteButton(event)}
-                          onClick={() => handleButtonClick(eventData)}
+                          onClick={handleButtonClick}
                           style={{ fontSize: "20px" }}
                         >
                           Event Details
