@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logoImage from "../assets/Community Logo (2).png";
+// import logoImage from "../assets/Community Logo (2).png";
 import { useState } from "react";
 import {
   useSession,
@@ -41,12 +41,12 @@ const NavBar = () => {
           className="container mx-auto flex items-center justify-between" //px-0 h-20
         >
           <div className="flex items-center space-x-3">
-            <img
+            {/* <img
               src={logoImage}
               alt="Community Events 2025"
               // className=" logo h-12"
               className="h-12"
-            />
+            /> */}
             <h1
               // style={{ marginLeft: "100px" }}
               // className=" text-xl sm:text-lg lg:text-3xl text-black font-light"

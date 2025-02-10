@@ -70,7 +70,8 @@ const EventDetail = () => {
       <div className="relative flex flex-col rounded-xl bg-transparent items-center font-medium">
         <h4
           style={{ color: "#d5f483" }}
-          className="block text-4xl font-large text-center mt-12 mb-10"
+          // className="block text-4xl font-large text-center mt-12 mb-10"
+          className="block text-3xl font-large text-center mt-8 mb-6"
         >
           Event Details
         </h4>
