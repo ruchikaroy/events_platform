@@ -3,6 +3,7 @@ import ImageToAdd from "../assets/Teal Lilac Neon Green 1.png";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
 import { useEffect, useState } from "react";
 
+
 const Home = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
@@ -11,18 +12,23 @@ const Home = () => {
 
   useEffect(() => {
     if (session) {
-      const checkAdminLogin = (email: any) => {
-        const adminEmail = "roymanagement369@gmail.com";
-        if (adminEmail.includes(email)) {
-          navigate("/admin");
-        } else {
-          navigate("/eventslist");
-        }
-      };
-      checkAdminLogin(session.user.email);
+      navigate("/auth/callback");
     } else {
       setCheckingSession(false);
     }
+    // if (session) {
+    //   const checkAdminLogin = (email: any) => {
+    //     const adminEmail = "roymanagement369@gmail.com";
+    //     if (adminEmail.includes(email)) {
+    //       navigate("/admin");
+    //     } else {
+    //       navigate("/eventslist");
+    //     }
+    //   };
+    //   checkAdminLogin(session.user.email);
+    // } else {
+    //   setCheckingSession(false);
+    // }
   }, [session, navigate]);
 
   const googleSignin = () => {
