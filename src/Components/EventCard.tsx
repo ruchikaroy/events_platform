@@ -67,17 +67,6 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
     }
   }, [eventData]);
 
-  const handleButtonClick = () => {
-    const redirectUri = encodeURIComponent(
-      "https://rr-events-biz.netlify.app/eventslist"
-    );
-    const googleCalendarUrl =
-      "https://calendar.google.com/calendar/u/0/r/eventedit";
-    const fullUrl = `${googleCalendarUrl}&redirect_uri=${redirectUri}`;
-
-    window.location.href = fullUrl;
-  };
-
   // const handleButtonClick = (event: Event) => {
   //   navigate("/eventdetails", { state: { eventObj: event } }); // navigated to eventdetails component with the selected event object as state. passed the event obj with the state
   // };
@@ -209,7 +198,19 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                         >
                           Register
                         </button>
-                        <button
+                        <a
+                          href="https://calendar.google.com/calendar/u/0/r/eventedit"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <button
+                            className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin"
+                            style={{ fontSize: "20px" }}
+                          >
+                            Open Google Calendar
+                          </button>
+                        </a>
+                        {/* <button
                           id={event.id}
                           className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin"
                           type="button"
@@ -218,7 +219,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           style={{ fontSize: "20px" }}
                         >
                           Event Details
-                        </button>
+                        </button> */}
                       </>
                     )}
                   </div>
