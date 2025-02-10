@@ -161,7 +161,7 @@ const CreateEventForm = () => {
 
   return (
     <>
-      <div className="relative flex flex-col rounded-xl items-center justify-center mt-2">
+      <div className="relative flex flex-col rounded-xl items-center justify-center mt-5">
         <h1
           style={{ color: "#d5f483" }}
           className=" text-center text-3xl block font-thin"
@@ -196,6 +196,7 @@ const CreateEventForm = () => {
                   style={{
                     backgroundColor: "#beb5ef",
                     color: "#486570 !important",
+                    width: "200px",
                   }}
                   required
                 />
