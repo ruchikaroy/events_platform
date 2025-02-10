@@ -31,7 +31,11 @@ const Home = () => {
         provider: "google",
         options: {
           scopes: "https://www.googleapis.com/auth/calendar",
-          redirectTo: window.location.href,
+          redirectTo: "http://localhost:300/auth/callback",
+          queryParams: {
+            access_type: "offline",
+            prompt: "consent",
+          },
         },
       })
       .then((data) => {
