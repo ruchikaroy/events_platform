@@ -10,24 +10,45 @@ const Home = () => {
   const navigate = useNavigate();
   const [checkingSession, setCheckingSession] = useState(true);
 
+  // useEffect(() => {
+  //   if (session) {
+  //     const checkAdminLogin = (email: any) => {
+  //       const adminEmail = "roymanagement369@gmail.com";
+
+  //       if (email === adminEmail) {
+  //         navigate("/admin");
+  //       } else {
+  //         navigate("/eventslist");
+  //       }
+  //     };
+  //     checkAdminLogin(session.user.email);
+  //   } else {
+  //     setCheckingSession(false);
+  //   }
+  // }, [session, navigate]);
+
   useEffect(() => {
     if (session) {
-      const checkAdminLogin = (email: any) => {
-        const adminEmail = "roymanagement369@gmail.com";
+      const isAdminLogin = localStorage.getItem("adminLogin") === "true";
 
-        if (email === adminEmail) {
-          navigate("/admin");
-        } else {
-          navigate("/eventslist");
-        }
-      };
-      checkAdminLogin(session.user.email);
+      if (isAdminLogin) {
+        navigate("/admin");
+      } else {
+        navigate("/eventslist");
+      }
+      localStorage.removeItem("adminLogin");
     } else {
       setCheckingSession(false);
     }
   }, [session, navigate]);
 
-  const googleSignin = () => {
+  const googleSignin = (isAdmin: boolean) => {
+    if (isAdmin) {
+      localStorage.setItem("adminLogin", "true");
+    } else {
+      localStorage.removeItem("adminLogin");
+    } //if this doesnt work remove the above
+
     supabase.auth
       .signInWithOAuth({
         provider: "google",
@@ -79,19 +100,20 @@ const Home = () => {
                   color: "#486570",
                   fontSize: "20px",
                 }}
-                onClick={googleSignin}
+                // onClick={googleSignin}
+                onClick={() => googleSignin(false)}
                 className="  px-4 py-2 rounded-md font-medium"
               >
                 User Login
               </button>
               <button
-                id="adminButton" //added this point
                 style={{
                   backgroundColor: "#beb5ef",
                   color: "#486570",
                   fontSize: "20px",
                 }}
-                onClick={googleSignin}
+                // onClick={googleSignin}
+                onClick={() => googleSignin(true)}
                 className=" px-4 py-2 rounded-md font-medium"
               >
                 Admin Login
