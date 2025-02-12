@@ -32,7 +32,7 @@ const Home = () => {
       .signInWithOAuth({
         provider: "google",
         options: {
-          scopes: "https://www.googleapis.com/auth/calendar",
+          // scopes: "https://www.googleapis.com/auth/calendar",
           redirectTo:
             "https://pcstcetyssfvownxovbt.supabase.co/auth/v1/callback",
           queryParams: {
@@ -85,6 +85,7 @@ const Home = () => {
                 User Login
               </button>
               <button
+                id="adminButton" //added this point
                 style={{
                   backgroundColor: "#beb5ef",
                   color: "#486570",
