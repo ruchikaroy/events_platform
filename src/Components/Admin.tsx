@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Admin = () => {
   // const session = useSession();
@@ -30,9 +31,9 @@ const Admin = () => {
     event.preventDefault();
     if (userId === inputUserId && userEmail === inputUserEmail) {
       navigate("/eventslist");
-      alert("Access to Admin content permitted.");
+      toast.success("Access to Admin content permitted.");
     } else {
-      alert("Invalid User Email/ User Id, ");
+      toast.error("Invalid User Email/ User Id! ");
       setInputUserEmail(""), setInputUserId("");
     }
   };
