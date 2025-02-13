@@ -16,6 +16,7 @@ Hosted link: https://rr-events-biz.netlify.app/
 - **Sign Up for Events:** Easily register for events you're interested in.
 - **Add Events to Calendar:** Add events directly to your personal Google calendar with a single click.
 - **Admin Access:** Admins can create new events and delete existing ones via the admin panel.
+  To test admin panel, login credentials are: email: roymanagement369@gmail.com / userd id: 2593058948991.The delete functionality will unpublish the event (soft delete).
 - **Eventbrite Integration:** Pulls in real-time event data from Eventbrite to ensure the app stays up to date with the latest events. These events are all private events, not public ones.
 - **Supabase** manages authentication tokens and database operations.
 
