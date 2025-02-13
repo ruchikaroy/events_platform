@@ -4,6 +4,9 @@ Welcome to the **Events App**, a platform where users can browse community event
 
 This app integrates with Eventbrite for event retrieval, creation, and deletion, providing users with a rich and up-to-date event experience.
 
+Hosted link: https://rr-events-biz.netlify.app/
+
+
 ---
 
 ## Features
