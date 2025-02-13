@@ -14,9 +14,10 @@ Hosted link: https://rr-events-biz.netlify.app/
 - **Browse Community Events:** View a variety of community events in a user-friendly interface.
 - **Google Sign-In:** Sign in securely using your Google account.
 - **Sign Up for Events:** Easily register for events you're interested in.
-- **Add Events to Calendar:** Add events directly to your personal calendar with a single click.
+- **Add Events to Calendar:** Add events directly to your personal Google calendar with a single click.
 - **Admin Access:** Admins can create new events and delete existing ones via the admin panel.
-- **Eventbrite Integration:** Pulls in real-time event data from Eventbrite to ensure the app stays up to date with the latest events.
+- **Eventbrite Integration:** Pulls in real-time event data from Eventbrite to ensure the app stays up to date with the latest events. These events are all private events, not public ones.
+- **Supabase** manages authentication tokens and database operations.
 
   ***
 
