@@ -145,7 +145,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 <div
                   key={event.id}
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
-                  className="flex flex-col shadow-md rounded-lg w-full max-w-[350px] mx-auto"
+                  className="flex flex-col shadow-md rounded-lg w-full max-w-[400px] mx-auto"
                   // className="flex flex-col shadow-md rounded-lg w-full sm:w-96 md:w-[350px] mx-auto"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
