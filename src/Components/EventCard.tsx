@@ -110,7 +110,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
 
   return (
     <>
-      <div className="m-1">
+      <div>
         {isLoading ? (
           <div className="d-flex justify-content-center align-items-center mt-4">
             <Spinner animation="border" variant="white" role="status">
@@ -144,7 +144,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 <div
                   key={event.id}
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
-                  className="flex flex-col shadow-md rounded-lg w-full sm:w-[250px] md:w-[350px] mx-auto"
+                  className="flex flex-col shadow-md rounded-lg w-full sm:w-96 md:w-[350px] mx-auto"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
                     <img
