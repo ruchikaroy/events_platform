@@ -122,8 +122,9 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
             Sorry! an error has occurred.
           </h2>
         ) : (
-          <ul>
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <ul className="p-0 m-0">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"> */}
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto w-full max-w-[1200px]">
               {isAdmin && (
                 <div className="flex flex-col items-center justify-center bg-white shadow-md border rounded-lg w-full sm:w-80 mx-auto p-6 min-h-[550px]">
                   {/* // <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96  justify-center items-center"> */}
@@ -144,7 +145,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 <div
                   key={event.id}
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
-                  className="flex flex-col shadow-md rounded-lg sm:w-96 md:w-[350px] mx-auto"
+                  className="flex flex-col shadow-md rounded-lg w-full max-w-[350px] mx-auto"
                   // className="flex flex-col shadow-md rounded-lg w-full sm:w-96 md:w-[350px] mx-auto"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
