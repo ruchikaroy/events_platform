@@ -145,7 +145,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                 <div
                   key={event.id}
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
-                  className="flex flex-col shadow-md rounded-lg w-full max-w-[400px] mx-auto"
+                  className="flex flex-col shadow-md rounded-lg w-full max-w-[350px] mx-auto"
                   // className="flex flex-col shadow-md rounded-lg w-full sm:w-96 md:w-[350px] mx-auto"
                 >
                   <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
@@ -235,7 +235,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           className="w-full rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none font-thin no-underline "
                           style={{ fontSize: "20px" }}
                         >
-                          Add to Calendar
+                          Add to calendar
                         </a>
                       </>
                     )}
