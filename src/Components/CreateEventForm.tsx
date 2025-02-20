@@ -290,7 +290,6 @@ const CreateEventForm = () => {
                 <input
                   className="w-full text-md rounded-md px-3 py-2 focus:outline-none shadow-sm focus:shadow"
                   style={{ backgroundColor: "#beb5ef", color: "#486570" }}
-                  placeholder="Enter Currency"
                   type="text"
                   id="currency"
                   name="currency"
@@ -313,7 +312,7 @@ const CreateEventForm = () => {
                   className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow mb-3"
                   style={{
                     backgroundColor: "#beb5ef",
-                    color: "#486570 !important",
+                    color: "#486570",
                   }}
                   type="text"
                   id="freeEntry"
