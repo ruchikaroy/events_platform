@@ -295,7 +295,7 @@ const CreateEventForm = () => {
                   id="currency"
                   name="currency"
                   value="GBP"
-                  // onChange={handleChange}
+                  readOnly
                 />
               </div>
               <div className="w-full max-w-sm min-w-[200px]">
@@ -315,13 +315,11 @@ const CreateEventForm = () => {
                     backgroundColor: "#beb5ef",
                     color: "#486570 !important",
                   }}
-                  placeholder="True or False"
                   type="text"
                   id="freeEntry"
                   name="freeEntry"
                   value="True"
-                  // onChange={handleChange}
-                  required
+                  readOnly
                 />
               </div>
               {/* <div>
