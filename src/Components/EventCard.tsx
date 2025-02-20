@@ -125,9 +125,10 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
           <ul className="p-0 m-0">
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto w-full max-w-[1200px]">
               {isAdmin && (
-                <li className="flex flex-col items-center justify-center  bg-white shadow-md border rounded-lg w-full max-w-[350px] mx-auto p-6 min-h-[550px] ">
+                <li className="flex flex-col items-center justify-center  bg-white shadow-md border rounded-lg w-full max-w-[350px] mx-auto p-6 min-h-[550px] transform transition duration-300 hover:scale-105 hover:shadow-xl">
                   <button
-                    className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    // className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="button"
                     onClick={handleCreateEventButtonClick}
                   >
