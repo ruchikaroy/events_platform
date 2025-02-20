@@ -142,7 +142,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
                   className="flex flex-col shadow-md rounded-lg w-full max-w-[350px] mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl"
                 >
-                  <div className="relative h-56 mt-3 overflow-hidden text-white rounded-md">
+                  <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
                     <img
                       style={{ minHeight: "250px" }}
                       src={

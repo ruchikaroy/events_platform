@@ -38,20 +38,10 @@ const NavBar = () => {
       >
         <div
           style={{ color: "#486570" }}
-          className="container mx-auto flex items-center justify-between" //px-0 h-20
+          className="container mx-auto flex items-center justify-between mb-3"
         >
-          {/* <div className="flex items-center space-x-3"> */}
           <div className="flex items-center justify-between w-full">
-            {/* <img
-              src={logoImage}
-              alt="Community Events 2025"
-              // className=" logo h-12"
-              className="h-12"
-            /> */}
-            <h1
-              // style={{ marginLeft: "100px" }}
-              className=" text-xl sm:text-lg lg:text-3xl text-black font-light"
-            >
+            <h1 className=" text-xl sm:text-lg lg:text-3xl text-black font-light">
               COMMUNITY EVENTS
             </h1>
 
