@@ -38,7 +38,7 @@ const NavBar = () => {
       >
         <div
           style={{ color: "#486570" }}
-          className="container mx-auto flex items-center justify-between mb-3"
+          className="container mx-auto flex items-center justify-between"
         >
           <div className="flex items-center justify-between w-full">
             <h1 className=" text-xl sm:text-lg lg:text-3xl text-black font-light">
