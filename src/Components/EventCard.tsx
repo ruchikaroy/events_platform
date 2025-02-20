@@ -123,12 +123,8 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
           </h2>
         ) : (
           <ul className="p-0 m-0">
-            {/* <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"> */}
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto w-full max-w-[1200px]">
               {isAdmin && (
-                // <div className="flex flex-col items-center justify-center bg-white shadow-md border rounded-lg w-full sm:w-80 mx-auto p-6 min-h-[550px]">
-                //   {/* // <div className="flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96  justify-center items-center"> */}
-
                 <li className="flex flex-col items-center justify-center  bg-white shadow-md border rounded-lg w-full max-w-[350px] mx-auto p-6 min-h-[550px] ">
                   <button
                     className="rounded-md bg-slate-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -146,7 +142,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                   style={{ backgroundColor: "#f4f4f4", minHeight: "550px" }}
                   className="flex flex-col shadow-md rounded-lg w-full max-w-[350px] mx-auto transform transition duration-300 hover:scale-105 hover:shadow-xl"
                 >
-                  <div className="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
+                  <div className="relative h-56 m-4 overflow-hidden text-white rounded-md">
                     <img
                       style={{ minHeight: "250px" }}
                       src={
