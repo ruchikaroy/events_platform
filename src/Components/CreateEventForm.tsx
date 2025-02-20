@@ -294,8 +294,7 @@ const CreateEventForm = () => {
                   type="text"
                   id="currency"
                   name="currency"
-                  defaultValue="GBP"
-                  // value={formData.currency}
+                  value="GBP"
                   // onChange={handleChange}
                 />
               </div>
@@ -320,8 +319,7 @@ const CreateEventForm = () => {
                   type="text"
                   id="freeEntry"
                   name="freeEntry"
-                  defaultValue="True"
-                  // value={formData.freeEntry}
+                  value="True"
                   // onChange={handleChange}
                   required
                 />
