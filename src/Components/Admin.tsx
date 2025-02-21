@@ -69,7 +69,12 @@ const Admin = () => {
                 setInputUserId(e.target.value);
               }}
             />
-            <button type="submit">Submit</button>
+            <button
+              className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              type="submit"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>
