@@ -11,11 +11,10 @@ const Admin = () => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [inputUserEmail, setInputUserEmail] = useState<string>("");
   const [inputUserId, setInputUserId] = useState<string>("");
-  const [isLoading, setIsLoading] = useState(true);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    setIsLoading(true);
+
     try {
       axios
         .get(
@@ -29,6 +28,9 @@ const Admin = () => {
           setUserid(eventBriteAccountUseriD);
           setUserEmail(eventBriteUserEmail);
 
+          if (userId === null || userEmail === null) {
+            toast.error("Please enter admin credentials.");
+          }
           if (userId === inputUserId && userEmail === inputUserEmail) {
             navigate("/eventslist");
             toast.success("Access to Admin content permitted.");
@@ -37,44 +39,12 @@ const Admin = () => {
             setInputUserEmail("");
             setInputUserId("");
           }
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
     } catch (error) {
       console.error("Error fetching user data:", error);
       toast.error("Verification failed.");
     }
-
-    // if (isLoading || userId === null || userEmail === null) {
-    //   toast.error("Please enter admin email and user id.");
-    // }
-    // if (userId === inputUserId && userEmail === inputUserEmail) {
-    //   navigate("/eventslist");
-    //   toast.success("Access to Admin content permitted.");
-    // } else {
-    //   toast.error("Invalid User Email/ User Id! ");
-    //   setInputUserEmail(""), setInputUserId("");
-    // }
   };
-
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://www.eventbriteapi.com/v3/users/me/?token=${
-  //         import.meta.env.VITE_EB_ADMIN_TOKEN
-  //       }`
-  //     )
-  //     .then((response: any) => {
-  //       const eventBriteAccountUseriD = response.data.id;
-  //       const eventBriteUserEmail = response.data.emails[0].email;
-  //       setUserid(eventBriteAccountUseriD);
-  //       setUserEmail(eventBriteUserEmail);
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
 
   return (
     <>
@@ -112,8 +82,7 @@ const Admin = () => {
                 className="rounded-md bg-violet-400 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-violet-700 focus:shadow-none active:bg-violet-700 hover:bg-violet-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="submit"
               >
-                {isLoading ? "Verifying..." : "Submit"}
-                {/* Submit */}
+                Submit
               </button>
             </div>
           </div>
