@@ -71,7 +71,7 @@ const NavBar = () => {
                     />
                     <button onClick={() => googleSignOut()}>Sign Out</button>
                   </li>
-                  {localStorage.getItem("adminLogin") && (
+                  {!localStorage.getItem("adminLogin") && (
                     <li className="flex items-center p-1 gap-x-2">
                       <FontAwesomeIcon
                         icon={faCalendarCheck}
