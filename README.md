@@ -1,8 +1,8 @@
 # Events App
 
-Welcome to the **Events App**, a platform where users can browse community events, sign in using their Google account, sign up for events, and add them to their personal google calendar. Admin users also have access to create and delete events, giving them full control over the event listings.
+**Events App** is a platform where users can browse community events, sign in using their Google account, sign up for events, and add them to their personal google calendar. Admin users also have access to create and delete events, giving them full control over the event listings.
 
-This app integrates with Eventbrite for event retrieval, creation, and deletion, providing users with a rich and up-to-date event experience.
+This app integrates with Eventbrite for event retrieval, creation, and deletion.
 
 Hosted link: [Events App](https://rr-events-biz.netlify.app/)
 
