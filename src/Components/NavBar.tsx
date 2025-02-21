@@ -71,23 +71,25 @@ const NavBar = () => {
                     />
                     <button onClick={() => googleSignOut()}>Sign Out</button>
                   </li>
-                  <li className="flex items-center p-1 gap-x-2">
-                    <FontAwesomeIcon
-                      icon={faCalendarCheck}
-                      style={{ color: "#486570" }}
-                    />
-                    <button>
-                      <Link
-                        className="text-black"
-                        style={{
-                          textDecoration: "none",
-                        }}
-                        to={"/eventslist"}
-                      >
-                        Events
-                      </Link>
-                    </button>
-                  </li>
+                  {localStorage.getItem("adminLogin") && (
+                    <li className="flex items-center p-1 gap-x-2">
+                      <FontAwesomeIcon
+                        icon={faCalendarCheck}
+                        style={{ color: "#486570" }}
+                      />
+                      <button>
+                        <Link
+                          className="text-black"
+                          style={{
+                            textDecoration: "none",
+                          }}
+                          to={"/eventslist"}
+                        >
+                          Events
+                        </Link>
+                      </button>
+                    </li>
+                  )}
                 </ul>
               ) : null}
             </div>
