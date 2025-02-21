@@ -7,11 +7,18 @@ const Admin = () => {
   // const session = useSession();
   const navigate = useNavigate();
   // console.log(session);
+  //const [userId, setUserid] = useState<string | null>(null);
+  //const [userEmail, setUserEmail] = useState<string | null>(null);
   const [inputUserEmail, setInputUserEmail] = useState<string>("");
   const [inputUserId, setInputUserId] = useState<string>("");
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (inputUserId === null || inputUserEmail === null) {
+      toast.error("Please enter admin credentials.");
+      return;
+    }
 
     try {
       axios
@@ -24,27 +31,40 @@ const Admin = () => {
           const eventBriteAccountUseriD = response.data.id;
           const eventBriteUserEmail = response.data.emails[0].email;
 
-          if (!inputUserId || !inputUserEmail) {
-            toast.error("Please enter admin credentials.");
-            return;
-          }
           if (
-            eventBriteAccountUseriD === inputUserId &&
-            eventBriteUserEmail === inputUserEmail
+            inputUserId === eventBriteAccountUseriD &&
+            inputUserEmail === eventBriteUserEmail
           ) {
-            toast.success("Access to Admin content permitted.");
             navigate("/eventslist");
+            toast.success("Access to Admin content permitted.");
           } else {
             toast.error("Invalid User Email/ User Id! ");
-            setInputUserEmail("");
-            setInputUserId("");
+            return;
           }
+          //setUserid(eventBriteAccountUseriD);
+          //setUserEmail(eventBriteUserEmail);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Invalid User Email/ User Id! ");
         });
     } catch (error) {
       console.error("Error fetching user data:", error);
       toast.error("Verification failed.");
     }
   };
+
+  // if (userId === null || userEmail === null) {
+  //   toast.error("Please enter admin credentials.");
+  // }
+  // if (userId === inputUserId && userEmail === inputUserEmail) {
+  //   navigate("/eventslist");
+  //   toast.success("Access to Admin content permitted.");
+  // } else {
+  //   toast.error("Invalid User Email/ User Id! ");
+  //   setInputUserEmail("");
+  //   setInputUserId("");
+  // }
 
   return (
     <>
