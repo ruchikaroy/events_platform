@@ -4,11 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Admin = () => {
-  // const session = useSession();
   const navigate = useNavigate();
-  // console.log(session);
-  //const [userId, setUserid] = useState<string | null>(null);
-  //const [userEmail, setUserEmail] = useState<string | null>(null);
+
   const [inputUserEmail, setInputUserEmail] = useState<string>("");
   const [inputUserId, setInputUserId] = useState<string>("");
 
@@ -41,8 +38,6 @@ const Admin = () => {
             toast.error("Invalid User Email/ User Id! ");
             return;
           }
-          //setUserid(eventBriteAccountUseriD);
-          //setUserEmail(eventBriteUserEmail);
         })
         .catch((error) => {
           console.log(error);
@@ -54,25 +49,13 @@ const Admin = () => {
     }
   };
 
-  // if (userId === null || userEmail === null) {
-  //   toast.error("Please enter admin credentials.");
-  // }
-  // if (userId === inputUserId && userEmail === inputUserEmail) {
-  //   navigate("/eventslist");
-  //   toast.success("Access to Admin content permitted.");
-  // } else {
-  //   toast.error("Invalid User Email/ User Id! ");
-  //   setInputUserEmail("");
-  //   setInputUserId("");
-  // }
-
   return (
     <>
       <div className="flex flex-col justify-center items-center min-h-screen">
         <div className="flex items-center justify-center">
           <h1 style={{ color: "#f4f4f4" }}>Enter Admin Details</h1>
         </div>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div
             style={{ backgroundColor: "#f4f4f4", height: "300px" }}
             className="relative flex flex-col items-start justify-center px-10 rounded-lg"
