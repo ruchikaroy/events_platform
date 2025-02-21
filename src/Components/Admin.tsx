@@ -7,8 +7,6 @@ const Admin = () => {
   // const session = useSession();
   const navigate = useNavigate();
   // console.log(session);
-  const [userId, setUserid] = useState<string | null>(null);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [inputUserEmail, setInputUserEmail] = useState<string>("");
   const [inputUserId, setInputUserId] = useState<string>("");
 
@@ -25,15 +23,17 @@ const Admin = () => {
         .then((response: any) => {
           const eventBriteAccountUseriD = response.data.id;
           const eventBriteUserEmail = response.data.emails[0].email;
-          setUserid(eventBriteAccountUseriD);
-          setUserEmail(eventBriteUserEmail);
 
-          if (userId === null || userEmail === null) {
+          if (!inputUserId || !inputUserEmail) {
             toast.error("Please enter admin credentials.");
+            return;
           }
-          if (userId === inputUserId && userEmail === inputUserEmail) {
-            navigate("/eventslist");
+          if (
+            eventBriteAccountUseriD === inputUserId &&
+            eventBriteUserEmail === inputUserEmail
+          ) {
             toast.success("Access to Admin content permitted.");
+            navigate("/eventslist");
           } else {
             toast.error("Invalid User Email/ User Id! ");
             setInputUserEmail("");
