@@ -7,10 +7,11 @@ const Admin = () => {
   // const session = useSession();
   const navigate = useNavigate();
   // console.log(session);
-  const [userId, setUserid] = useState<string>("");
-  const [userEmail, setUserEmail] = useState<string>("");
+  const [userId, setUserid] = useState<string | null>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [inputUserEmail, setInputUserEmail] = useState<string>("");
   const [inputUserId, setInputUserId] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -24,11 +25,16 @@ const Admin = () => {
         const eventBriteUserEmail = response.data.emails[0].email;
         setUserid(eventBriteAccountUseriD);
         setUserEmail(eventBriteUserEmail);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (isLoading) return;
     if (userId === inputUserId && userEmail === inputUserEmail) {
       navigate("/eventslist");
       toast.success("Access to Admin content permitted.");
