@@ -13,6 +13,21 @@ const Admin = () => {
   const [inputUserId, setInputUserId] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (isLoading || userId === null || userEmail === null) {
+      toast.error("Please enter admin email and user id.");
+    }
+    if (userId === inputUserId && userEmail === inputUserEmail) {
+      navigate("/eventslist");
+      toast.success("Access to Admin content permitted.");
+    } else {
+      toast.error("Invalid User Email/ User Id! ");
+      setInputUserEmail(""), setInputUserId("");
+    }
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -29,23 +44,7 @@ const Admin = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (isLoading || userId === null || userEmail === null) {
-      toast.error("Please enter admin email and user id.")
-
-    };
-    if (userId === inputUserId && userEmail === inputUserEmail) {
-      navigate("/eventslist");
-      toast.success("Access to Admin content permitted.");
-    } else {
-      toast.error("Invalid User Email/ User Id! ");
-      setInputUserEmail(""), setInputUserId("");
-    }
-  };
+  }, [setUserid, setUserEmail]);
 
   return (
     <>
