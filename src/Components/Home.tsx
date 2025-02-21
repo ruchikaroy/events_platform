@@ -10,23 +10,6 @@ const Home = () => {
   const navigate = useNavigate();
   const [checkingSession, setCheckingSession] = useState(true);
 
-  // useEffect(() => {
-  //   if (session) {
-  //     const checkAdminLogin = (email: any) => {
-  //       const adminEmail = "roymanagement369@gmail.com";
-
-  //       if (email === adminEmail) {
-  //         navigate("/admin");
-  //       } else {
-  //         navigate("/eventslist");
-  //       }
-  //     };
-  //     checkAdminLogin(session.user.email);
-  //   } else {
-  //     setCheckingSession(false);
-  //   }
-  // }, [session, navigate]);
-
   useEffect(() => {
     if (session) {
       const isAdminLogin = localStorage.getItem("adminLogin") === "true";
@@ -35,8 +18,9 @@ const Home = () => {
         navigate("/admin");
       } else {
         navigate("/eventslist");
+        localStorage.removeItem("adminLogin");
       }
-      localStorage.removeItem("adminLogin");
+      
     } else {
       setCheckingSession(false);
     }

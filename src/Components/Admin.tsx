@@ -72,7 +72,7 @@ const Admin = () => {
         <div className="flex items-center justify-center">
           <h1 style={{ color: "#f4f4f4" }}>Enter Admin Details</h1>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <div
             style={{ backgroundColor: "#f4f4f4", height: "300px" }}
             className="relative flex flex-col items-start justify-center px-10 rounded-lg"
