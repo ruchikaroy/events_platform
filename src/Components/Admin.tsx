@@ -34,7 +34,10 @@ const Admin = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (isLoading) return;
+    if (isLoading || userId === null || userEmail === null) {
+      toast.error("Please enter admin email and user id.")
+
+    };
     if (userId === inputUserId && userEmail === inputUserEmail) {
       navigate("/eventslist");
       toast.success("Access to Admin content permitted.");
