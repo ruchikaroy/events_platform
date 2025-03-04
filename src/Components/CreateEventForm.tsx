@@ -276,7 +276,7 @@ const CreateEventForm = () => {
                   required
                 />
               </div>
-              <div className="w-full max-w-sm min-w-[200px]">
+              {/* <div className="w-full max-w-sm min-w-[200px]">
                 <label
                   htmlFor="currency"
                   style={{
@@ -296,8 +296,8 @@ const CreateEventForm = () => {
                   value="GBP"
                   readOnly
                 />
-              </div>
-              <div className="w-full max-w-sm min-w-[200px]">
+              </div> */}
+              {/* <div className="w-full max-w-sm min-w-[200px]">
                 <label
                   htmlFor="freeEntry"
                   style={{
@@ -320,7 +320,7 @@ const CreateEventForm = () => {
                   value="True"
                   readOnly
                 />
-              </div>
+              </div> */}
               {/* <div>
                 <img src={formData.id} alt="Event Logo" />
               </div> */}
