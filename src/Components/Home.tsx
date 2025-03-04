@@ -12,15 +12,15 @@ const Home = () => {
 
   useEffect(() => {
     if (session) {
-      const isAdminLogin = localStorage.getItem("adminLogin") === "true";
+      // const isAdminLogin = localStorage.getItem("adminLogin") === "true";
 
-      if (isAdminLogin) {
-        navigate("/admin");
-      } else {
-        navigate("/eventslist");
-        localStorage.removeItem("adminLogin");
-      }
-      
+      // if (isAdminLogin) {
+      //   navigate("/admin");
+      // } else {
+      //   navigate("/eventslist");
+      //   localStorage.removeItem("adminLogin");
+      // }
+      navigate("/eventslist");
     } else {
       setCheckingSession(false);
     }
