@@ -344,10 +344,10 @@ const CreateEventForm = () => {
               // }}
             >
               <button
-                className={`text-md rounded-md px-3 py-3 text-center focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 bg-white text-[#486570] ${
+                className={`w-75 text-md rounded-md px-3 py-3 text-center focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 bg-[#d5f483] text-[#486570] ${
                   disable
                     ? "cursor-not-allowed opacity-50"
-                    : " hover:bg-[#d5f483] hover:text-[#486570] border transition-all duration-200 cursor-pointer"
+                    : " hover:bg-white hover:text-[#486570] border transition-all duration-200 cursor-pointer"
                 } `}
                 type="submit"
                 disabled={disable}
