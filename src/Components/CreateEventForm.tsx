@@ -28,6 +28,10 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.currentTarget.disabled = true;
+  };
+
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.currentTarget.disabled = true; // this disables the button after one click
@@ -342,7 +346,9 @@ const CreateEventForm = () => {
                 cursor: "pointer",
               }}
             >
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={handleButtonClick}>
+                Submit
+              </button>
             </div>
           </form>
         </div>
