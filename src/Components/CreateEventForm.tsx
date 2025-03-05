@@ -334,14 +334,14 @@ const CreateEventForm = () => {
               </div> */}
             </div>
             <div
-              className="w-75 text-md rounded-md px-3 py-3 focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 hover:bg-green-800 hover:text-green-900 border transition-all duration-200"
-              style={{
-                backgroundColor: "#d5f483",
-                color: "#486570",
-                fontSize: "20px",
-                textAlign: "center",
-                cursor: "pointer",
-              }}
+              className="w-75 text-md rounded-md px-3 py-3 focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 hover:bg-green-800 hover:text-green-900 border transition-all duration-200 cursor-pointer"
+              // style={{
+              //   backgroundColor: "#d5f483",
+              //   color: "#486570",
+              //   fontSize: "20px",
+              //   textAlign: "center",
+              //   cursor: "pointer",
+              // }}
             >
               <button name="submit" disabled={disable}>
                 Submit
