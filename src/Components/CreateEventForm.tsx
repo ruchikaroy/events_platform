@@ -10,6 +10,7 @@ const CreateEventForm = () => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonColor, setButtonColor] = useState("#d5f483");
 
   const navigate = useNavigate();
 
@@ -27,6 +28,10 @@ const CreateEventForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleClick = () => {
+    setButtonColor("white");
   };
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
@@ -336,14 +341,18 @@ const CreateEventForm = () => {
             <div
               className="w-75 text-md rounded-md px-3 py-3 focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 hover:bg-green-800 hover:text-green-900 border transition-all duration-200"
               style={{
-                backgroundColor: "#d5f483",
+                backgroundColor: buttonColor,
                 color: "#486570",
                 fontSize: "20px",
                 textAlign: "center",
                 cursor: "pointer",
               }}
             >
-              <button type="submit" disabled={buttonDisabled}>
+              <button
+                type="submit"
+                disabled={buttonDisabled}
+                onClick={handleClick}
+              >
                 Submit
               </button>
             </div>
