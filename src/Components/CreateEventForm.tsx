@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const CreateEventForm = () => {
   const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -27,6 +30,7 @@ const CreateEventForm = () => {
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.currentTarget.disabled = true; // this disables the button after one click
 
     if (!token || !organizationId) {
       setMessage(
@@ -89,6 +93,7 @@ const CreateEventForm = () => {
         const eventId = response.data.id;
 
         setMessage("Event Created Successfully!");
+        setIsLoading(false);
         console.log("Event Created:", response.data);
 
         return axios
@@ -116,6 +121,7 @@ const CreateEventForm = () => {
           .then((ticketResponse) => {
             console.log("Ticket created successfully", ticketResponse.data);
             setMessage("Ticket created successfully");
+            setIsLoading(false);
             return axios.post(
               `https://www.eventbriteapi.com/v3/events/${ticketResponse.data.event_id}/publish/`,
               {},
@@ -132,8 +138,9 @@ const CreateEventForm = () => {
             setMessage(
               "Event created, ticket added and published successfully"
             );
+            setIsLoading(false);
             setTimeout(() => {
-              alert("Event creation is complete!");
+              toast.success("Event creation is complete!");
               navigate("/eventslist");
             }, 2000);
           })
@@ -339,14 +346,31 @@ const CreateEventForm = () => {
             </div>
           </form>
         </div>
-        {message && (
+        <div>
+          {isLoading ? (
+            <div className="d-flex justify-content-center align-items-center mt-4">
+              <Spinner animation="border" variant="white" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          ) : (
+            <p
+              className="font-thin"
+              style={{ color: "#f4f4f4", fontSize: "20px" }}
+            >
+              {message}
+            </p>
+          )}
+        </div>
+
+        {/* {message && (
           <p
             className="font-thin"
             style={{ color: "#f4f4f4", fontSize: "20px" }}
           >
             {message}
           </p>
-        )}
+        )} */}
       </div>
     </>
   );
