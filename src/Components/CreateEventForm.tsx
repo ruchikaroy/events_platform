@@ -341,9 +341,7 @@ const CreateEventForm = () => {
                 cursor: "pointer",
               }}
             >
-              <button type="submit" disabled={true}>
-                Submit
-              </button>
+              <button type="submit">Submit</button>
             </div>
           </form>
         </div>
@@ -357,7 +355,7 @@ const CreateEventForm = () => {
           ) : (
             <p
               className="font-thin"
-              style={{ color: "#f4f4f4", fontSize: "20px" }}
+              style={{ color: "#f4f4f4", fontSize: "20px", cursor: "pointer" }}
             >
               {message}
             </p>
