@@ -9,6 +9,7 @@ const CreateEventForm = () => {
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,6 +31,7 @@ const CreateEventForm = () => {
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setButtonDisabled(true);
 
     if (!token || !organizationId) {
       setMessage(
@@ -341,7 +343,9 @@ const CreateEventForm = () => {
                 cursor: "pointer",
               }}
             >
-              <button type="submit">Submit</button>
+              <button type="submit" disabled={buttonDisabled}>
+                Submit
+              </button>
             </div>
           </form>
         </div>
