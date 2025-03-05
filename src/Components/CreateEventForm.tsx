@@ -38,6 +38,7 @@ const CreateEventForm = () => {
         "Missing API credentials. Please check your environment variables."
       );
       console.error("Error: Missing API token or organization ID.");
+      setDisable(false);
       return;
     }
     const currentTime = new Date();
@@ -46,12 +47,14 @@ const CreateEventForm = () => {
 
     if (selectedStartTime < currentTime) {
       alert("Start time cannot be in the past. Please select a future time.");
+      setDisable(false);
       return;
     }
     if (selectedStartTime > selectedEndTime) {
       alert(
         "Start time cannot be before end time. Please select appropprite start time."
       );
+      setDisable(false);
       return;
     }
 
@@ -157,6 +160,7 @@ const CreateEventForm = () => {
                   error.response?.data?.error_description || error.message
                 }`
               );
+              setDisable(false);
             } else {
               console.error("Unexpected error:", error);
               setMessage(
@@ -333,20 +337,24 @@ const CreateEventForm = () => {
                 <img src={formData.id} alt="Event Logo" />
               </div> */}
             </div>
-            <div
-              className="w-75 text-md rounded-md px-3 py-3 focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 hover:bg-green-800 hover:text-green-900 border transition-all duration-200 cursor-pointer"
-              // style={{
-              //   backgroundColor: "#d5f483",
-              //   color: "#486570",
-              //   fontSize: "20px",
-              //   textAlign: "center",
-              //   cursor: "pointer",
-              // }}
+            {/* <div
+            // className="w-75 text-md rounded-md px-3 py-3 text-center focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 bg-white text-[#486570] hover:bg-[#d5f483] hover:text-[#486570] border transition-all duration-200 cursor-pointer"
+            // style={{
+            //   backgroundColor: "#d5f483",
+            //   color: "#486570",
+            //   fontSize: "20px",
+            //   textAlign: "center",
+            //   cursor: "pointer",
+            // }}
+            > */}
+            <button
+              className="w-75 text-md rounded-md px-3 py-3 text-center focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 bg-white text-[#486570] hover:bg-[#d5f483] hover:text-[#486570] border transition-all duration-200 cursor-pointer"
+              type="submit"
+              disabled={disable}
             >
-              <button name="submit" disabled={disable}>
-                Submit
-              </button>
-            </div>
+              Submit
+            </button>
+            {/* </div> */}
           </form>
         </div>
         <div>
