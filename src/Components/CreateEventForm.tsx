@@ -9,8 +9,7 @@ const CreateEventForm = () => {
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [buttonColor, setButtonColor] = useState("#d5f483");
+  const [disable, setDisable] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,13 +29,9 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleClick = () => {
-    setButtonColor("white");
-  };
-
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setButtonDisabled(true);
+    setDisable(true);
 
     if (!token || !organizationId) {
       setMessage(
@@ -341,18 +336,14 @@ const CreateEventForm = () => {
             <div
               className="w-75 text-md rounded-md px-3 py-3 focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 hover:bg-green-800 hover:text-green-900 border transition-all duration-200"
               style={{
-                backgroundColor: buttonColor,
+                backgroundColor: "#d5f483",
                 color: "#486570",
                 fontSize: "20px",
                 textAlign: "center",
                 cursor: "pointer",
               }}
             >
-              <button
-                type="submit"
-                disabled={buttonDisabled}
-                onClick={handleClick}
-              >
+              <button name="submit" disabled={disable}>
                 Submit
               </button>
             </div>
