@@ -28,13 +28,8 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.currentTarget.disabled = true;
-  };
-
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    e.currentTarget.disabled = true; // this disables the button after one click
 
     if (!token || !organizationId) {
       setMessage(
@@ -346,7 +341,7 @@ const CreateEventForm = () => {
                 cursor: "pointer",
               }}
             >
-              <button type="submit" onClick={handleButtonClick}>
+              <button type="submit" disabled={true}>
                 Submit
               </button>
             </div>
