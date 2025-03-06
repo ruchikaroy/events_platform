@@ -32,7 +32,7 @@ const CreateEventForm = () => {
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
-    setIsLoading(true);
+    setIsLoading(false);
 
     if (!token || !organizationId) {
       setMessage(
