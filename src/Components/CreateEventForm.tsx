@@ -29,10 +29,6 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleButtonClick = () => {
-    setIsLoading(true);
-  };
-
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
@@ -350,14 +346,33 @@ const CreateEventForm = () => {
                 } `}
                 type="submit"
                 disabled={disable}
-                onClick={handleButtonClick}
               >
                 Submit
               </button>
             </div>
+            <div>
+              {isLoading ? (
+                <div className="d-flex justify-content-center align-items-center mt-4">
+                  <Spinner animation="border" variant="white" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                </div>
+              ) : (
+                <p
+                  className="font-thin"
+                  style={{
+                    color: "#f4f4f4",
+                    fontSize: "20px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {message}
+                </p>
+              )}
+            </div>
           </form>
         </div>
-        <div>
+        {/* <div>
           {isLoading ? (
             <div className="d-flex justify-content-center align-items-center mt-4">
               <Spinner animation="border" variant="white" role="status">
@@ -372,16 +387,7 @@ const CreateEventForm = () => {
               {message}
             </p>
           )}
-        </div>
-
-        {/* {message && (
-          <p
-            className="font-thin"
-            style={{ color: "#f4f4f4", fontSize: "20px" }}
-          >
-            {message}
-          </p>
-        )} */}
+        </div> */}
       </div>
     </>
   );
