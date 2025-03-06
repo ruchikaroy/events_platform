@@ -30,9 +30,9 @@ const CreateEventForm = () => {
   };
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
     e.preventDefault();
     setDisable(true);
-    setIsLoading(true);
 
     if (!token || !organizationId) {
       setMessage(
@@ -141,10 +141,9 @@ const CreateEventForm = () => {
             console.log("Event Published", publishResponse.data);
             setMessage(
               "Event created, ticket added and published successfully"
-            );
+            ); setIsLoading(false);
 
             setTimeout(() => {
-              setIsLoading(false);
               toast.success("Event creation is complete!");
               navigate("/eventslist");
             }, 2000);
