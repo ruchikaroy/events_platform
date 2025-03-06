@@ -29,10 +29,14 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleButtonClick = () => {
+    setIsLoading(true);
+  };
+
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
-    setIsLoading(false);
+    setIsLoading(true);
 
     if (!token || !organizationId) {
       setMessage(
@@ -346,6 +350,7 @@ const CreateEventForm = () => {
                 } `}
                 type="submit"
                 disabled={disable}
+                onClick={handleButtonClick}
               >
                 Submit
               </button>
