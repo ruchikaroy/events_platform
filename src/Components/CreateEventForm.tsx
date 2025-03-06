@@ -32,6 +32,7 @@ const CreateEventForm = () => {
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
+    setIsLoading(true);
 
     if (!token || !organizationId) {
       setMessage(
@@ -141,8 +142,9 @@ const CreateEventForm = () => {
             setMessage(
               "Event created, ticket added and published successfully"
             );
-            setIsLoading(false);
+
             setTimeout(() => {
+              setIsLoading(false);
               toast.success("Event creation is complete!");
               navigate("/eventslist");
             }, 2000);
@@ -335,16 +337,7 @@ const CreateEventForm = () => {
                 <img src={formData.id} alt="Event Logo" />
               </div> */}
             </div>
-            <div
-              className="mt-3 flex flex-col items-center justify-items-center w-full"
-              // style={{
-              //   backgroundColor: "#d5f483",
-              //   color: "#486570",
-              //   fontSize: "20px",
-              //   textAlign: "center",
-              //   cursor: "pointer",
-              // }}
-            >
+            <div className="mt-3 flex flex-col items-center justify-items-center w-full">
               <button
                 className={`w-75 text-md rounded-md px-3 py-3 text-center focus:outline-none  shadow-sm focus:shadow justify-self-center mt-2 bg-[#d5f483] text-[#486570] ${
                   disable
