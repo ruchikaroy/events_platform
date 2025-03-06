@@ -99,8 +99,8 @@ const CreateEventForm = () => {
       )
       .then((response) => {
         const eventId = response.data.id;
-
         setMessage("Event Created Successfully!");
+        setIsLoading(false);
         console.log("Event Created:", response.data);
 
         return axios
@@ -128,6 +128,7 @@ const CreateEventForm = () => {
           .then((ticketResponse) => {
             console.log("Ticket created successfully", ticketResponse.data);
             setMessage("Ticket created successfully");
+            setIsLoading(false);
 
             return axios.post(
               `https://www.eventbriteapi.com/v3/events/${ticketResponse.data.event_id}/publish/`,
@@ -145,6 +146,7 @@ const CreateEventForm = () => {
             setMessage(
               "Event created, ticket added and published successfully"
             );
+            setIsLoading(false);
             setTimeout(() => {
               toast.success("Event creation is complete!");
               navigate("/eventslist");
