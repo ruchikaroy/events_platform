@@ -354,21 +354,21 @@ const CreateEventForm = () => {
           </form>
         </div>
         <div>
-          {!isLoading ? (
-            <p
-              className="font-thin"
-              style={{ color: "#f4f4f4", fontSize: "20px", cursor: "pointer" }}
-            >
-              {message}
-            </p>
-          ) : (
+          {isLoading && (
             <div className="d-flex justify-content-center align-items-center mt-4">
               <Spinner animation="border" variant="white" role="status">
                 <span className="visually-hidden">Loading...</span>
               </Spinner>
             </div>
           )}
-
+          {!isLoading && (
+            <p
+              className="font-thin"
+              style={{ color: "#f4f4f4", fontSize: "20px", cursor: "pointer" }}
+            >
+              {message}
+            </p>
+          )}
           {/* {disable ? (
             <div className="d-flex justify-content-center align-items-center mt-4">
               <Spinner animation="border" variant="white" role="status">
