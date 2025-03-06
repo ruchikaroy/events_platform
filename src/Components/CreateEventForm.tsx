@@ -46,12 +46,14 @@ const CreateEventForm = () => {
 
     if (selectedStartTime < currentTime) {
       alert("Start time cannot be in the past. Please select a future time.");
+      setDisable(false);
       return;
     }
     if (selectedStartTime > selectedEndTime) {
       alert(
         "Start time cannot be before end time. Please select appropprite start time."
       );
+      setDisable(false);
       return;
     }
 
