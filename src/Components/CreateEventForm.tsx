@@ -8,7 +8,7 @@ const CreateEventForm = () => {
   const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [message, setMessage] = useState("");
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [disable, setDisable] = useState(false);
 
   const navigate = useNavigate();
@@ -30,15 +30,17 @@ const CreateEventForm = () => {
   };
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
-    // setIsLoading(true);
     e.preventDefault();
     setDisable(true);
+    setIsLoading(true);
 
     if (!token || !organizationId) {
       setMessage(
         "Missing API credentials. Please check your environment variables."
       );
       console.error("Error: Missing API token or organization ID.");
+      setDisable(false);
+      setIsLoading(false);
       return;
     }
     const currentTime = new Date();
@@ -48,6 +50,7 @@ const CreateEventForm = () => {
     if (selectedStartTime < currentTime) {
       alert("Start time cannot be in the past. Please select a future time.");
       setDisable(false);
+      setIsLoading(false);
       return;
     }
     if (selectedStartTime > selectedEndTime) {
@@ -55,6 +58,7 @@ const CreateEventForm = () => {
         "Start time cannot be before end time. Please select appropprite start time."
       );
       setDisable(false);
+      setIsLoading(false);
       return;
     }
 
@@ -97,7 +101,6 @@ const CreateEventForm = () => {
         const eventId = response.data.id;
 
         setMessage("Event Created Successfully!");
-        // setIsLoading(false);
         console.log("Event Created:", response.data);
 
         return axios
@@ -125,7 +128,7 @@ const CreateEventForm = () => {
           .then((ticketResponse) => {
             console.log("Ticket created successfully", ticketResponse.data);
             setMessage("Ticket created successfully");
-            // setIsLoading(false);
+
             return axios.post(
               `https://www.eventbriteapi.com/v3/events/${ticketResponse.data.event_id}/publish/`,
               {},
@@ -142,8 +145,6 @@ const CreateEventForm = () => {
             setMessage(
               "Event created, ticket added and published successfully"
             );
-            // setIsLoading(false);
-
             setTimeout(() => {
               toast.success("Event creation is complete!");
               navigate("/eventslist");
@@ -167,6 +168,10 @@ const CreateEventForm = () => {
                 "An unexpected error occurred while creating the event."
               );
             }
+          })
+          .finally(() => {
+            setDisable(false);
+            setIsLoading(false);
           });
       });
   };
@@ -353,7 +358,22 @@ const CreateEventForm = () => {
           </form>
         </div>
         <div>
-          {disable ? (
+          {isLoading && (
+            <div className="d-flex justify-content-center align-items-center mt-4">
+              <Spinner animation="border" variant="white" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          )}
+          {!isLoading && (
+            <p
+              className="font-thin"
+              style={{ color: "#f4f4f4", fontSize: "20px", cursor: "pointer" }}
+            >
+              {message}
+            </p>
+          )}
+          {/* {disable ? (
             <div className="d-flex justify-content-center align-items-center mt-4">
               <Spinner animation="border" variant="white" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -366,7 +386,7 @@ const CreateEventForm = () => {
             >
               {message}
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </>
