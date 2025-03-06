@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
+import categories from "../categories";
 
 const CreateEventForm = () => {
   const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
@@ -10,6 +11,7 @@ const CreateEventForm = () => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [disable, setDisable] = useState(false);
+  // const [category, setCategory] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,6 +30,10 @@ const CreateEventForm = () => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
+  // const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setCategory(e.target.value);
+  // };
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -181,7 +187,7 @@ const CreateEventForm = () => {
           style={{ color: "#d5f483" }}
           className=" text-center text-3xl block font-thin"
         >
-          CREATE EVENT
+          Create an Event!
         </h1>
         <div>
           <form
@@ -291,6 +297,30 @@ const CreateEventForm = () => {
                   required
                 />
               </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="category"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  Event Category
+                </label>
+                <select
+                  id="category"
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
+                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
+                >
+                  <option></option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
               {/* <div className="w-full max-w-sm min-w-[200px]">
                 <label
                   htmlFor="currency"
@@ -370,28 +400,6 @@ const CreateEventForm = () => {
               {message}
             </p>
           )}
-          {/* {!isLoading && (
-            <p
-              className="font-thin"
-              style={{ color: "#f4f4f4", fontSize: "20px", cursor: "pointer" }}
-            >
-              {message}
-            </p>
-          )} */}
-          {/* {disable ? (
-            <div className="d-flex justify-content-center align-items-center mt-4">
-              <Spinner animation="border" variant="white" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            </div>
-          ) : (
-            <p
-              className="font-thin"
-              style={{ color: "#f4f4f4", fontSize: "20px", cursor: "pointer" }}
-            >
-              {message}
-            </p>
-          )} */}
         </div>
       </div>
     </>
