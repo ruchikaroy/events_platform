@@ -8,7 +8,7 @@ const CreateEventForm = () => {
   const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [disable, setDisable] = useState(false);
 
   const navigate = useNavigate();
