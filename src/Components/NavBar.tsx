@@ -1,6 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import logoImage from "../assets/Community Logo (2).png";
 import { useState } from "react";
 import {
   useSession,

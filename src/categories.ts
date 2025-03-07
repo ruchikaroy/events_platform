@@ -1,3 +1,8 @@
-const categories = ["Gardening", "Art", "Culture", "Food"];
+const categories = [
+  "Workshops",
+  "Conferences",
+  "Music Festivals",
+  "Food and beverage events",
+];
 
 export default categories;

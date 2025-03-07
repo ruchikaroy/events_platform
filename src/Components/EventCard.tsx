@@ -73,9 +73,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
     return dateObj.toISOString().replace(/[-:]/g, "").split(".")[0];
   };
 
-  // const handleButtonClick = (event: Event) => {
-  //   navigate("/eventdetails", { state: { eventObj: event } }); // navigated to eventdetails component with the selected event object as state. passed the event obj with the state
-  // };
+ 
   const handleCreateEventButtonClick = () => {
     navigate("/eventform");
   };
