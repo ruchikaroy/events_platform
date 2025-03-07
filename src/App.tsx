@@ -18,7 +18,7 @@ function App() {
           <Route element={<ProtectedLayout />}>
             <Route path="/eventslist" element={<EventsList />}></Route>
             <Route path="/eventdetails" element={<EventDetail />}></Route>
-            <Route path="/home2" element={<Home2 />}></Route>
+            <Route path="/user" element={<Home2 />}></Route>
             <Route path="/eventform" element={<CreateEventForm />}></Route>
           </Route>
         </Routes>

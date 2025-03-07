@@ -1,27 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import ImageToAdd from "../assets/Teal Lilac Neon Green 1.png";
 import { useSupabaseClient, useSession } from "@supabase/auth-helpers-react";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Home = () => {
   const session = useSession(); //tokens saved here in the session. When session exists, we have a user
   const supabase = useSupabaseClient(); //talk to supabase
   const navigate = useNavigate();
-  // const [checkingSession, setCheckingSession] = useState(true);
+  const [checkingSession, setCheckingSession] = useState(true);
 
   const userLogin = () => {
     console.log("user login");
-    navigate("/home2"); // remove this implementation if new feature doesnt work
+    navigate("/user"); // remove this implementation if new feature doesnt work
   };
 
-  // useEffect(() => {
-  //   if (session) {
-  //     navigate("/eventslist");
-  //   } else {
-  //     setCheckingSession(false);
-  //   }
-  // }, [session, navigate]);
+  useEffect(() => {
+    if (session) {
+      navigate("/eventslist");
+    } else {
+      setCheckingSession(false);
+    }
+  }, [session, navigate]);
 
   const googleSignin = (isAdmin: boolean) => {
     if (isAdmin) {
@@ -52,9 +52,9 @@ const Home = () => {
         console.log(error);
       });
   };
-  // if (checkingSession) {
-  //   return null;
-  // }
+  if (checkingSession) {
+    return null;
+  }
 
   return (
     <>
