@@ -10,6 +10,11 @@ const Home = () => {
   const navigate = useNavigate();
   const [checkingSession, setCheckingSession] = useState(true);
 
+  const userLogin = () => {
+    console.log("user login");
+    navigate("/home2"); // remove this implementation if new feature doesnt work
+  };
+
   useEffect(() => {
     if (session) {
       navigate("/eventslist");
@@ -17,10 +22,6 @@ const Home = () => {
       setCheckingSession(false);
     }
   }, [session, navigate]);
-
-  const userLogin = () => {
-    navigate("/home2"); // remove this implementation if new feature doesnt work
-  };
 
   const googleSignin = (isAdmin: boolean) => {
     if (isAdmin) {
@@ -35,7 +36,6 @@ const Home = () => {
       .signInWithOAuth({
         provider: "google",
         options: {
-          // scopes: "https://www.googleapis.com/auth/calendar",
           redirectTo:
             "https://pcstcetyssfvownxovbt.supabase.co/auth/v1/callback",
           queryParams: {
@@ -58,10 +58,7 @@ const Home = () => {
 
   return (
     <>
-      <div
-        // style={{ minHeight: "90vh" }}
-        className="flex flex-col justify-center items-center min-h-[90vh]"
-      >
+      <div className="flex flex-col justify-center items-center min-h-[90vh]">
         {!session && (
           <>
             <h1
@@ -94,7 +91,6 @@ const Home = () => {
                   color: "#486570",
                   fontSize: "20px",
                 }}
-                // onClick={googleSignin}
                 onClick={() => googleSignin(true)}
                 className=" px-4 py-2 rounded-md font-medium"
               >
