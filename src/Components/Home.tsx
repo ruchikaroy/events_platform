@@ -12,16 +12,23 @@ const Home = () => {
 
   const userLogin = () => {
     console.log("user login");
-    navigate("/user"); // remove this implementation if new feature doesnt work
+    navigate(`/user`); // remove this implementation if new feature doesnt work
   };
 
+  // useEffect(() => {
+  //   if (session) {
+  //     navigate("/eventslist");
+  //   } else {
+  //     setCheckingSession(false);
+  //   }
+  // }, [session, navigate]);
+
   useEffect(() => {
-    if (session) {
+    if (checkingSession && session) {
       navigate("/eventslist");
-    } else {
-      setCheckingSession(false);
     }
-  }, [session, navigate]);
+    setCheckingSession(false);
+  }, [session, navigate, checkingSession]);
 
   const googleSignin = (isAdmin: boolean) => {
     if (isAdmin) {
@@ -46,6 +53,11 @@ const Home = () => {
       })
       .then((data) => {
         console.log("Logged in successfully", data);
+        if (isAdmin) {
+          navigate("/eventslist"); // Redirect Admin
+        } else {
+          navigate("/user"); // Redirect Regular User
+        }
       })
       .catch((error) => {
         toast.error("Error logging in to Google provider with Supabase");
