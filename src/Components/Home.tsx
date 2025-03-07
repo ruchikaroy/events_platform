@@ -18,13 +18,18 @@ const Home = () => {
     }
   }, [session, navigate]);
 
+  const userLogin = () => {
+    navigate("/home2"); // remove this implementation if new feature doesnt work
+  };
+
   const googleSignin = (isAdmin: boolean) => {
     if (isAdmin) {
       localStorage.setItem("adminLogin", "true");
-    } else {
-      localStorage.removeItem("adminLogin");
-      navigate("/home2"); // remove only this line if supabase feature doesnt work
     }
+    // else {
+    //   localStorage.removeItem("adminLogin");
+
+    // } // uncomment this if feature doesnt work
 
     supabase.auth
       .signInWithOAuth({
@@ -77,8 +82,8 @@ const Home = () => {
                   color: "#486570",
                   fontSize: "20px",
                 }}
-                // onClick={googleSignin}
-                onClick={() => googleSignin(false)}
+                onClick={userLogin}
+                // onClick={() => googleSignin(false)} // uncomment this out if new feature doesnt work
                 className="  px-4 py-2 rounded-md font-medium"
               >
                 User Login
