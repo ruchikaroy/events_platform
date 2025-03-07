@@ -23,7 +23,8 @@ const Home = () => {
       localStorage.setItem("adminLogin", "true");
     } else {
       localStorage.removeItem("adminLogin");
-    } //if this doesnt work remove the above
+      navigate("/home2"); // remove only this line if supabase feature doesnt work
+    }
 
     supabase.auth
       .signInWithOAuth({
