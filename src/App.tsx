@@ -4,7 +4,7 @@ import EventDetail from "./Components/EventDetail";
 import EventsList from "./Components/EventsList";
 import CreateEventForm from "./Components/CreateEventForm";
 import ProtectedLayout from "./Components/ProtectedLayout";
-import Home2 from "./Components/Home2";
+import UserLogin from "./Components/UserLogin";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/user" element={<Home2 />}></Route>
+          <Route path="/user" element={<UserLogin />}></Route>
           <Route element={<ProtectedLayout />}>
             <Route path="/eventslist" element={<EventsList />}></Route>
             <Route path="/eventdetails" element={<EventDetail />}></Route>

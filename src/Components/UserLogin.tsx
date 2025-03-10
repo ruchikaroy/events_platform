@@ -5,7 +5,7 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import supabase from "../supabase";
 import { Session } from "@supabase/supabase-js";
 
-const Home2 = () => {
+const UserLogin = () => {
   const [session, setSession] = useState<Session | null>(null);
   const navigate = useNavigate();
   const [checkingSession, setCheckingSession] = useState(true);
@@ -37,10 +37,44 @@ const Home2 = () => {
   }
 
   if (!session) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <div style={{ width: "400px" }}>
+          <Auth
+            supabaseClient={supabase}
+            appearance={{
+              theme: ThemeSupa,
+              style: {
+                container: {
+                  backgroundColor: "white",
+                  padding: "10px",
+                  borderRadius: "10px",
+                  boxSizing: "border-box",
+                },
+                button: {
+                  width: "100%",
+                  backgroundColor: "#beb5ef",
+                  color: "#486570",
+                  border: "none",
+                },
+              },
+            }}
+            providers={["google"]}
+            socialLayout="vertical"
+          />
+        </div>
+      </div>
+    );
   } else {
     return <div>Logged in!</div>;
   }
 };
 
-export default Home2;
+export default UserLogin;

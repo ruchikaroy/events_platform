@@ -14,7 +14,7 @@ const Home = () => {
 
   const userLogin = () => {
     console.log("user login");
-    navigate(`/user`); // remove this implementation if new feature doesnt work
+    navigate("/user");
   };
 
   useEffect(() => {
@@ -28,11 +28,9 @@ const Home = () => {
   const googleSignin = (isAdmin: boolean) => {
     if (isAdmin) {
       localStorage.setItem("adminLogin", "true");
+    } else {
+      localStorage.removeItem("adminLogin");
     }
-    // else {
-    //   localStorage.removeItem("adminLogin");
-
-    // } // uncomment this if feature doesnt work
 
     supabase.auth
       .signInWithOAuth({
@@ -82,7 +80,6 @@ const Home = () => {
                   fontSize: "20px",
                 }}
                 onClick={userLogin}
-                // onClick={() => googleSignin(false)} // uncomment this out if new feature doesnt work
                 className="  px-4 py-2 rounded-md font-medium"
               >
                 User Login
