@@ -95,11 +95,9 @@ npm run dev
 ---
 
 ## 📌 Tech Stack
-
 | Technology          | Description                     |
 | ------------------- | ------------------------------- |
 | **Frontend**        | React, TypeScript, Tailwind CSS |
 | **API Integration** | Eventbrite API                  |
 | **Authentication**  | Google OAuth via Supabase       |
 | **Build Tool**      | Vite                            |
-|
