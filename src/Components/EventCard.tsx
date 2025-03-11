@@ -182,7 +182,6 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           })
                           .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
                       </li>
-                      <li>Category: {event.category?.name}</li>
                     </h6>
 
                     <p className="text-slate-600 leading-normal font-light min-h-[50px]">

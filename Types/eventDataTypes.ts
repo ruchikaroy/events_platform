@@ -22,9 +22,5 @@ type Event = {
     utc: string;
   };
   venue_id: number;
-  category: {
-    id: string;
-    name: string;
-  };
 };
 export default Event;
