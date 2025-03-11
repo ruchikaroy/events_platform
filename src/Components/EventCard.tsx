@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 interface Props {
   showActions: boolean;
@@ -73,7 +74,6 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
     return dateObj.toISOString().replace(/[-:]/g, "").split(".")[0];
   };
 
- 
   const handleCreateEventButtonClick = () => {
     navigate("/eventform");
   };
@@ -92,7 +92,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
       )
       .then((response) => {
         console.log("Event Deleted!", response.data);
-        alert("Event Deleted");
+        toast.success("Event Deleted");
         setEventData((prevEvents) =>
           prevEvents.filter((e) => e.id !== event.id)
         );
@@ -102,7 +102,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
           "Error in deleting the event",
           error.response?.data || error.message
         );
-        alert("Failed to delete event");
+        toast.error("Failed to delete event");
       });
   };
 
@@ -132,7 +132,6 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                     Create Event
                   </button>
                 </li>
-                // </div>
               )}
               {eventData.map((event) => (
                 <div
