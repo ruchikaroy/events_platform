@@ -33,7 +33,7 @@ const NavBar = () => {
     <>
       <nav
         style={{ backgroundColor: "#f4f4f4" }}
-        className="shadow-md py-3 px-4 lg:px-8 rounded-md text-wrap"
+        className="shadow-md py-3 px-4 lg:px-8 rounded-md"
       >
         <div
           style={{ color: "#486570" }}
@@ -54,16 +54,16 @@ const NavBar = () => {
             >
               {session ? (
                 <ul className="flex flex-col lg:flex-row lg:space-x-6  ">
-                  <li className="flex items-center gap-x-2 text-xs sm:text-sm">
+                  <li className="flex items-center gap-x-2">
                     <FontAwesomeIcon
                       icon={faUser}
                       style={{ color: "#486570" }}
                     />
-                    <p className="text-black m-0 truncate max-w-xs sm:max-w-sm">
+                    <p className="text-black m-0">
                       Logged in email: {session?.user.email}
                     </p>
                   </li>
-                  <li className="flex items-center p-1 gap-x-2 text-xs sm:text-sm text-black  ">
+                  <li className="flex items-center p-1 gap-x-2 text-black  ">
                     <FontAwesomeIcon
                       style={{ color: "#486570" }}
                       icon={faRightFromBracket}
@@ -71,7 +71,7 @@ const NavBar = () => {
                     <button onClick={() => googleSignOut()}>Sign Out</button>
                   </li>
                   {!localStorage.getItem("adminLogin") && (
-                    <li className="flex items-center p-1 gap-x-2 text-xs sm:text-sm">
+                    <li className="flex items-center p-1 gap-x-2">
                       <FontAwesomeIcon
                         icon={faCalendarCheck}
                         style={{ color: "#486570" }}
