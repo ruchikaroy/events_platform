@@ -40,8 +40,8 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
               },
           })
         );
+        console.log(modifiedEventsWithSameLogo);
         setEventData(modifiedEventsWithSameLogo);
-        console.log(setEventData(modifiedEventsWithSameLogo));
         setIsLoading(false);
         setError(error);
       } catch (error) {
