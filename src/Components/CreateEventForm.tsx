@@ -54,13 +54,15 @@ const CreateEventForm = () => {
     const selectedEndTime = new Date(formData.endTime);
 
     if (selectedStartTime < currentTime) {
-      alert("Start time cannot be in the past. Please select a future time.");
+      toast.error(
+        "Start time cannot be in the past. Please select a future time."
+      );
       setDisable(false);
       setIsLoading(false);
       return;
     }
     if (selectedStartTime > selectedEndTime) {
-      alert(
+      toast.error(
         "Start time cannot be before end time. Please select appropprite start time."
       );
       setDisable(false);
