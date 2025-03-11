@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
-import categories from "../categories";
 
 const CreateEventForm = () => {
   const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
@@ -299,30 +298,7 @@ const CreateEventForm = () => {
                   required
                 />
               </div>
-              <div className="w-full max-w-sm min-w-[200px]">
-                <label
-                  htmlFor="category"
-                  style={{
-                    color: "#d5f483",
-                    fontSize: "20px",
-                  }}
-                  className="block mb-2 text-md font-thin"
-                >
-                  Event Category
-                </label>
-                <select
-                  id="category"
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
-                  style={{ backgroundColor: "#beb5ef", color: "#486570" }}
-                >
-                  <option></option>
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
+
               {/* <div className="w-full max-w-sm min-w-[200px]">
                 <label
                   htmlFor="currency"
