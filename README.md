@@ -34,7 +34,7 @@ This app integrates with Eventbrite for event retrieval, creation, and deletion.
 👤 **User Login:**
 
 - Use your **personal Gmail account** or create a new account.
-- Alternatively, use the use the **test user credentials**
+- Alternatively, use the **test user credentials**
   - **Email:** `general.role2025@gmail.com`
   - **Password:** `eventbrite2025`
 - This will take you "/eventslist" page where you can browse events, register and add events to your Google Calendar
