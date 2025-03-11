@@ -33,7 +33,7 @@ const NavBar = () => {
     <>
       <nav
         style={{ backgroundColor: "#f4f4f4" }}
-        className="shadow-md py-3 px-4 lg:px-8 rounded-md"
+        className="shadow-md py-3 px-4 lg:px-8 rounded-md text-wrap"
       >
         <div
           style={{ color: "#486570" }}
