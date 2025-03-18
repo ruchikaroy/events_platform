@@ -13,7 +13,7 @@ interface Props {
 
 const EventCard = ({ showActions, isAdmin }: Props) => {
   const [eventData, setEventData] = useState<Event[]>([]);
-  const token = import.meta.env.VITE_EB_GENERAL_USER_TOKEN;
+  const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
