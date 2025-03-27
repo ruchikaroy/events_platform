@@ -70,7 +70,7 @@ const CreateEventForm = () => {
       event: {
         name: { html: formData.name },
         description: { html: formData.description },
-        // date: new Date(formData.eventDate).toISOString().slice(1, 11),
+        date: new Date(formData.eventDate).toLocaleDateString("en-CA"),
         start: {
           timezone: formData.timezone,
           utc: new Date(formData.startTime).toISOString().slice(11, 19),
@@ -266,9 +266,10 @@ const CreateEventForm = () => {
                   type="date"
                   id="eventDate"
                   name="eventDate"
-                  value={new Date(formData.eventDate).toLocaleDateString(
-                    "en-CA"
-                  )}
+                  value={formData.eventDate}
+                  // value={new Date(formData.eventDate).toLocaleDateString(
+                  //   "en-CA"
+                  // )}
                   onChange={handleChange}
                   required
                 />
