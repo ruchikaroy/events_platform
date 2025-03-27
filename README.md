@@ -34,18 +34,19 @@ This app integrates with Eventbrite for event retrieval, creation, and deletion.
 👤 **User Login:**
 
 - Use your **personal Gmail account** or create a new account.
-- Alternatively, use the **test user credentials**
+- Alternatively, use the **test user credentials** with the OAuth sign-in method:
   - **Email:** `general.role2025@gmail.com`
   - **Password:** `eventbrite2025`
+- If you attempt to log in with username/password directly, you will receive an "invalid credentials" warning. Make sure to sign in using the Google OAuth method.
 - This will take you "/eventslist" page where you can browse events, register and add events to your Google Calendar
 
 🛠️ **Admin Login:**
 
-- Use the admin credentials:
+- Use the **admin credentials** with the OAuth sign-in method:
 
   - **Email:** `roymanagement369@gmail.com`
   - **Password:** `eventbrite2025`
-
+- If you attempt to log in with username/password directly, you will receive an "invalid credentials" warning. Make sure to sign in using the Google OAuth method.
 - This will take you "/eventslist" page where you can create and delete events
 
 ---
