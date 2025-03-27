@@ -77,13 +77,15 @@ const CreateEventForm = () => {
         description: { html: formData.description },
         start: {
           timezone: formData.timezone,
-          utc: formatDateTime(formData.startTime),
-          // .replace(/\.\d{3}Z$/, "Z"),
+          utc: new Date(formData.startTime)
+            .toISOString()
+            .replace(/\.\d{3}Z$/, "Z"),
         },
         end: {
           timezone: formData.timezone,
-          utc: formatDateTime(formData.endTime),
-          // .replace(/\.\d{3}Z$/, "Z"),
+          utc: new Date(formData.endTime)
+            .toISOString()
+            .replace(/\.\d{3}Z$/, "Z"),
         },
         currency: formData.currency,
         logo: { id: formData.id },
@@ -258,35 +260,7 @@ const CreateEventForm = () => {
                   }}
                   className="block mb-2 text-md font-thin"
                 >
-                  Event Date
-                </label>
-                <input
-                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
-                  style={{
-                    backgroundColor: "#beb5ef",
-                    color: "#486570",
-                  }}
-                  placeholder="Enter Event Date"
-                  type="date"
-                  id="eventDate"
-                  name="eventDate"
-                  value={new Date(formData.eventDate).toLocaleDateString(
-                    "en-CA"
-                  )}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="w-full max-w-sm min-w-[200px]">
-                <label
-                  htmlFor="startTime"
-                  style={{
-                    color: "#d5f483",
-                    fontSize: "20px",
-                  }}
-                  className="block mb-2 text-md font-thin"
-                >
-                  Start Time
+                  Start Date & Time
                 </label>
                 <input
                   className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
@@ -295,7 +269,7 @@ const CreateEventForm = () => {
                     color: "#486570",
                   }}
                   placeholder="Enter Start Time"
-                  type="time"
+                  type="datetime-local"
                   id="startTime"
                   name="startTime"
                   value={formData.startTime}
@@ -312,13 +286,13 @@ const CreateEventForm = () => {
                   }}
                   className="block mb-2 text-md font-thin"
                 >
-                  End Time
+                  End Date & Time
                 </label>
                 <input
                   className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
                   style={{ backgroundColor: "#beb5ef", color: "#486570" }}
                   placeholder="Enter End Time"
-                  type="time"
+                  type="datetime-local"
                   id="endTime"
                   name="endTime"
                   value={formData.endTime}
