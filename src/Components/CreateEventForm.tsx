@@ -31,6 +31,11 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const formatDateTime = (time: string) => {
+    const today = new Date().toISOString().split("T")[0];
+    return new Date(`${today}T${time}:00Z`).toISOString();
+  };
+
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
@@ -70,15 +75,14 @@ const CreateEventForm = () => {
       event: {
         name: { html: formData.name },
         description: { html: formData.description },
-        date: new Date(formData.eventDate).toLocaleDateString("en-CA"),
         start: {
           timezone: formData.timezone,
-          utc: new Date(formData.startTime).toISOString().slice(11, 19),
+          utc: formatDateTime(formData.startTime),
           // .replace(/\.\d{3}Z$/, "Z"),
         },
         end: {
           timezone: formData.timezone,
-          utc: new Date(formData.endTime).toISOString().slice(11, 19),
+          utc: formatDateTime(formData.endTime),
           // .replace(/\.\d{3}Z$/, "Z"),
         },
         currency: formData.currency,
@@ -266,10 +270,9 @@ const CreateEventForm = () => {
                   type="date"
                   id="eventDate"
                   name="eventDate"
-                  value={formData.eventDate}
-                  // value={new Date(formData.eventDate).toLocaleDateString(
-                  //   "en-CA"
-                  // )}
+                  value={new Date(formData.eventDate).toLocaleDateString(
+                    "en-CA"
+                  )}
                   onChange={handleChange}
                   required
                 />
