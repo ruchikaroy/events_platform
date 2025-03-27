@@ -31,11 +31,6 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const formatDateTime = (time: string) => {
-    const today = new Date().toISOString().split("T")[0];
-    return new Date(`${today}T${time}:00Z`).toISOString();
-  };
-
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
