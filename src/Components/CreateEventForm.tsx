@@ -266,9 +266,9 @@ const CreateEventForm = () => {
                   type="date"
                   id="eventDate"
                   name="eventDate"
-                  value={new Date(formData.eventDate)
-                    .toISOString()
-                    .slice(1, 11)}
+                  value={new Date(formData.eventDate).toLocaleDateString(
+                    "en-CA"
+                  )}
                   onChange={handleChange}
                   required
                 />
