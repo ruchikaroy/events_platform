@@ -291,7 +291,7 @@ const CreateEventForm = () => {
                     color: "#486570",
                   }}
                   placeholder="Enter Start Time"
-                  type="datetime-local"
+                  type="time"
                   id="startTime"
                   name="startTime"
                   value={formData.startTime}
@@ -314,7 +314,7 @@ const CreateEventForm = () => {
                   className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
                   style={{ backgroundColor: "#beb5ef", color: "#486570" }}
                   placeholder="Enter End Time"
-                  type="datetime-local"
+                  type="time"
                   id="endTime"
                   name="endTime"
                   value={formData.endTime}
