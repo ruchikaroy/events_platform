@@ -173,7 +173,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                             hour12: true,
                           })
                           .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
-                        -<br />{" "}
+                        -{"  "}
                         {new Date(event.end.local)
                           .toLocaleTimeString([], {
                             hour12: true,
