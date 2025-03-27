@@ -31,7 +31,6 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisable(true);
@@ -264,7 +263,7 @@ const CreateEventForm = () => {
                     color: "#486570",
                   }}
                   placeholder="Enter Event Date"
-                  type="datetime-local"
+                  type="date"
                   id="eventDate"
                   name="eventDate"
                   value={new Date(formData.eventDate)
