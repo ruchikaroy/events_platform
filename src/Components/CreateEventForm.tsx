@@ -17,6 +17,7 @@ const CreateEventForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
+    eventDate: "",
     startTime: "",
     endTime: "",
     timezone: "UTC",
@@ -30,9 +31,6 @@ const CreateEventForm = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  // const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setCategory(e.target.value);
-  // };
 
   const handleSubmission = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,17 +71,16 @@ const CreateEventForm = () => {
       event: {
         name: { html: formData.name },
         description: { html: formData.description },
+        // date: new Date(formData.eventDate).toISOString().slice(1, 11),
         start: {
           timezone: formData.timezone,
-          utc: new Date(formData.startTime)
-            .toISOString()
-            .replace(/\.\d{3}Z$/, "Z"),
+          utc: new Date(formData.startTime).toISOString().slice(11, 19),
+          // .replace(/\.\d{3}Z$/, "Z"),
         },
         end: {
           timezone: formData.timezone,
-          utc: new Date(formData.endTime)
-            .toISOString()
-            .replace(/\.\d{3}Z$/, "Z"),
+          utc: new Date(formData.endTime).toISOString().slice(11, 19),
+          // .replace(/\.\d{3}Z$/, "Z"),
         },
         currency: formData.currency,
         logo: { id: formData.id },
@@ -245,6 +242,34 @@ const CreateEventForm = () => {
                   id="description"
                   name="description"
                   value={formData.description}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="w-full max-w-sm min-w-[200px]">
+                <label
+                  htmlFor="startTime"
+                  style={{
+                    color: "#d5f483",
+                    fontSize: "20px",
+                  }}
+                  className="block mb-2 text-md font-thin"
+                >
+                  Event Date
+                </label>
+                <input
+                  className="w-full text-md rounded-md px-3 py-2 focus:outline-none  shadow-sm focus:shadow"
+                  style={{
+                    backgroundColor: "#beb5ef",
+                    color: "#486570",
+                  }}
+                  placeholder="Enter Event Date"
+                  type="datetime-local"
+                  id="eventDate"
+                  name="eventDate"
+                  value={new Date(formData.eventDate)
+                    .toISOString()
+                    .slice(1, 11)}
                   onChange={handleChange}
                   required
                 />
