@@ -167,7 +167,15 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                         Date: {new Date(event.start.local).toDateString()}
                       </li>
                       <li>
-                        Time:{" "}
+                        Start Time:{" "}
+                        {new Date(event.start.local).toLocaleTimeString([], {
+                          month: "short",
+                          day: "numeric",
+                          hour: "numeric",
+                          minute: "2-digit",
+                          hour12: true,
+                        })}
+                        {/* Time:{" "}
                         {new Date(event.start.local)
                           .toLocaleTimeString([], {
                             hour12: true,
@@ -178,16 +186,24 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
                           .toLocaleTimeString([], {
                             hour12: true,
                           })
-                          .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
+                          .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")} */}
                       </li>
-                      {/* <li>
+                      <li>
                         End Time:{" "}
+                        {new Date(event.end.local).toLocaleTimeString([], {
+                          month: "short",
+                          day: "numeric",
+                          hour: "numeric",
+                          minute: "2-digit",
+                          hour12: true,
+                        })}
+                        {/* End Time:{" "}
                         {new Date(event.end.local)
                           .toLocaleTimeString([], {
                             hour12: true,
                           })
-                          .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
-                      </li> */}
+                          .replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")} */}
+                      </li>
                     </h6>
 
                     <p className="text-slate-600 leading-normal font-light min-h-[50px]">
