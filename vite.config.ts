@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import mkcert from "vite-plugin-mkcert";
+// import mkcert from "vite-plugin-mkcert";
 
 // // https://vite.dev/config/
 // export default defineConfig({
@@ -12,7 +12,7 @@ export default defineConfig({
     port: 5173,
     open: true,
   }, // Not needed for Vite 5+
-  plugins: [react(), mkcert()],
+  plugins: [react()],
   css: {
     postcss: "./postcss.config.js",
   },
