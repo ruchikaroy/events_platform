@@ -86,7 +86,7 @@ const EventCard = ({ showActions, isAdmin }: Props) => {
         {},
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_EB_ADMIN_TOKEN}`,
+            Authorization: `Bearer ${import.meta.env.VITE_EB_TOKEN}`,
             "Content-Type": "application/json",
           },
         }

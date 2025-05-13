@@ -44,8 +44,8 @@ This app integrates with Eventbrite for event retrieval, creation, and deletion.
 
 - Use the **admin credentials** with the OAuth sign-in method:
 
-  - **Email:** `roymanagement369@gmail.com`
-  - **Password:** `eventbrite2025`
+  - **Email:** `bee19822025@gmail.com`
+  - **Password:** `eventApp2025`
 - If you attempt to log in with username/password directly, you will receive an "invalid credentials" warning. Make sure to sign in using the Google OAuth method.
 - This will take you "/eventslist" page where you can create and delete events
 
