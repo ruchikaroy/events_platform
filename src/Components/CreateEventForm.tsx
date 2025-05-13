@@ -5,7 +5,7 @@ import { Spinner } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 const CreateEventForm = () => {
-  const token = import.meta.env.VITE_EB_ADMIN_TOKEN;
+  const token = import.meta.env.VITE_EB_TOKEN;
   const organizationId = import.meta.env.VITE_EB_ORGANIZATION_ID;
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -85,6 +85,8 @@ const CreateEventForm = () => {
         currency: formData.currency,
         logo: { id: formData.id },
         venue_id: "249658623",
+        listed: false,
+        invite_only: true,
       },
     };
 

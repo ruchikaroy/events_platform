@@ -9,7 +9,7 @@ const EventsList = () => {
 
   useEffect(() => {
     const checkAdminStatus = (email: any) => {
-      const adminEmail = "roymanagement369@gmail.com";
+      const adminEmail = "bee19822025@gmail.com";
       setIsAdmin(adminEmail.includes(email));
     };
 
