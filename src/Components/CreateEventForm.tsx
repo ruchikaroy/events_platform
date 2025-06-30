@@ -243,6 +243,8 @@ const CreateEventForm = () => {
                   placeholder="Event Description"
                   id="description"
                   name="description"
+                  minLength={4}
+                  maxLength={140}
                   value={formData.description}
                   onChange={handleChange}
                   required
